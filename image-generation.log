@@ -1,0 +1,79 @@
+Starting image generation...
+[1/27] Generating: hero/hero-main.png
+Failed to make image generation request: 242 |                 headers: headers,
+243 |                 body: JSON.stringify(requestBody),
+244 |             });
+245 |             if (!response.ok) {
+246 |                 const errorBody = await response.text();
+247 |                 throw new Error(`API request failed with status ${response.status}: ${errorBody}`);
+                                ^
+error: API request failed with status 400: {"error":{"code":"1214","message":"size的长宽均需满足512px-2880px之间,且为32整数倍,并保证最大像素数不超过2^22px"}}
+      at createImageGeneration (/home/z/my-project/node_modules/z-ai-web-dev-sdk/dist/index.js:247:27)
+      at async generateImages (/home/z/my-project/scripts/generate-images.ts:175:53)
+
+  ✗ Failed: hero/hero-main.png - API request failed with status 400: {"error":{"code":"1214","message":"size的长宽均需满足512px-2880px之间,且为32整数倍,并保证最大像素数不超过2^22px"}}
+[2/27] Generating: hero/hero-alt.png
+Failed to make image generation request: 242 |                 headers: headers,
+243 |                 body: JSON.stringify(requestBody),
+244 |             });
+245 |             if (!response.ok) {
+246 |                 const errorBody = await response.text();
+247 |                 throw new Error(`API request failed with status ${response.status}: ${errorBody}`);
+                                ^
+error: API request failed with status 400: {"error":{"code":"1214","message":"size的长宽均需满足512px-2880px之间,且为32整数倍,并保证最大像素数不超过2^22px"}}
+      at createImageGeneration (/home/z/my-project/node_modules/z-ai-web-dev-sdk/dist/index.js:247:27)
+      at async generateImages (/home/z/my-project/scripts/generate-images.ts:175:53)
+
+  ✗ Failed: hero/hero-alt.png - API request failed with status 400: {"error":{"code":"1214","message":"size的长宽均需满足512px-2880px之间,且为32整数倍,并保证最大像素数不超过2^22px"}}
+[3/27] Generating: interiors/living-room.png
+  ✓ Generated: interiors/living-room.png (126.3KB)
+[4/27] Generating: interiors/kitchen.png
+  ✓ Generated: interiors/kitchen.png (135.5KB)
+[5/27] Generating: interiors/master-bedroom.png
+  ✓ Generated: interiors/master-bedroom.png (123.9KB)
+[6/27] Generating: interiors/bathroom.png
+  ✓ Generated: interiors/bathroom.png (141.5KB)
+[7/27] Generating: interiors/dining-room.png
+  ✓ Generated: interiors/dining-room.png (151.2KB)
+[8/27] Generating: lifestyle/yacht.png
+  ✓ Generated: lifestyle/yacht.png (124.3KB)
+[9/27] Generating: lifestyle/dining-terrace.png
+  ✓ Generated: lifestyle/dining-terrace.png (141.2KB)
+[10/27] Generating: lifestyle/cove.png
+  ✓ Generated: lifestyle/cove.png (217.1KB)
+[11/27] Generating: lifestyle/marina.png
+  ✓ Generated: lifestyle/marina.png (149.1KB)
+[12/27] Generating: lifestyle/poolside.png
+  ✓ Generated: lifestyle/poolside.png (184.8KB)
+[13/27] Generating: exteriors/rooftop-pool.png
+  ✓ Generated: exteriors/rooftop-pool.png (132.1KB)
+[14/27] Generating: exteriors/night-view.png
+  ✓ Generated: exteriors/night-view.png (158.1KB)
+[15/27] Generating: exteriors/garden-terrace.png
+  ✓ Generated: exteriors/garden-terrace.png (219.2KB)
+[16/27] Generating: exteriors/entrance.png
+  ✓ Generated: exteriors/entrance.png (195.2KB)
+[17/27] Generating: amenities/spa.png
+  ✓ Generated: amenities/spa.png (131.4KB)
+[18/27] Generating: amenities/gym.png
+  ✓ Generated: amenities/gym.png (155.7KB)
+[19/27] Generating: amenities/wine-cellar.png
+  ✓ Generated: amenities/wine-cellar.png (176.0KB)
+[20/27] Generating: location/aerial.png
+  ✓ Generated: location/aerial.png (185.6KB)
+[21/27] Generating: location/marina-club.png
+  ✓ Generated: location/marina-club.png (220.3KB)
+[22/27] Generating: location/coastline.png
+  ✓ Generated: location/coastline.png (192.3KB)
+[23/27] Generating: details/stone-detail.png
+  ✓ Generated: details/stone-detail.png (242.1KB)
+[24/27] Generating: details/hardware.png
+  ✓ Generated: details/hardware.png (76.6KB)
+[25/27] Generating: details/flooring.png
+  ✓ Generated: details/flooring.png (139.5KB)
+[26/27] Generating: exteriors/outdoor-kitchen.png
+  ✓ Generated: exteriors/outdoor-kitchen.png (169.5KB)
+[27/27] Generating: amenities/cinema.png
+  ✓ Generated: amenities/cinema.png (76.7KB)
+
+Generation complete: 25/27 images generated
