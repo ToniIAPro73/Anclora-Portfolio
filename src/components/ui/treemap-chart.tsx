@@ -33,7 +33,6 @@ export const TreemapChart: React.FC<TreemapChartProps> = ({
     let currentX = 0;
     let currentY = 0;
     let currentRowHeight = 0;
-    let currentRowWidth = 0;
 
     data.forEach((item, index) => {
       const ratio = item.value / total;
