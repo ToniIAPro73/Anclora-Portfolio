@@ -1,0 +1,48 @@
+import { ResidenceUnit } from "@/types";
+
+export const residenceUnits: ResidenceUnit[] = [
+  {
+    id: "penthouse",
+    floor: 4,
+    sqm: 380,
+    price: 12500000,
+    bedrooms: 4,
+    bathrooms: 4,
+    terrace: 120,
+    features: ["seaView", "privatePool", "solarium", "parking", "storage"],
+    image: "/images/exteriors/rooftop-pool.png",
+  },
+  {
+    id: "garden",
+    floor: 0,
+    sqm: 320,
+    price: 8900000,
+    bedrooms: 3,
+    bathrooms: 3,
+    terrace: 85,
+    features: ["mountainView", "privatePool", "parking", "storage"],
+    image: "/images/exteriors/garden-terrace.png",
+  },
+  {
+    id: "seaView",
+    floor: 3,
+    sqm: 280,
+    price: 7500000,
+    bedrooms: 3,
+    bathrooms: 3,
+    terrace: 60,
+    features: ["seaView", "parking", "storage"],
+    image: "/images/interiors/living-room.png",
+  },
+  {
+    id: "family",
+    floor: 2,
+    sqm: 250,
+    price: 6200000,
+    bedrooms: 4,
+    bathrooms: 3,
+    terrace: 45,
+    features: ["seaView", "mountainView", "parking"],
+    image: "/images/interiors/dining-room.png",
+  },
+];
