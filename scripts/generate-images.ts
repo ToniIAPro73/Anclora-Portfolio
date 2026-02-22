@@ -163,7 +163,11 @@ async function generateImages() {
     }
   }
   
-  const results = [];
+  type GenerationResult =
+    | { success: true; filename: string; size: number }
+    | { success: false; filename: string; error: string }
+
+  const results: GenerationResult[] = [];
   
   for (let i = 0; i < images.length; i++) {
     const img = images[i];
@@ -188,13 +192,14 @@ async function generateImages() {
       });
       
       console.log(`  ✓ Generated: ${img.filename} (${(buffer.length / 1024).toFixed(1)}KB)`);
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : String(error)
       results.push({
         success: false,
         filename: img.filename,
-        error: error.message
+        error: message
       });
-      console.error(`  ✗ Failed: ${img.filename} - ${error.message}`);
+      console.error(`  ✗ Failed: ${img.filename} - ${message}`);
     }
   }
   

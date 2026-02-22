@@ -1871,15 +1871,18 @@ export default function AndratxAzureResidencies() {
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {selectedUnit.features.map((feature) => (
-                    <span
-                      key={feature}
-                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[rgba(197,160,89,0.1)] text-[#C5A059] text-sm"
-                    >
-                      <CheckCircle2 className="w-3 h-3" />
-                      {t.residences[feature as keyof typeof t.residences]}
-                    </span>
-                  ))}
+                  {selectedUnit.features.map((feature) => {
+                    const featureLabel = t.residences[feature as keyof typeof t.residences]
+                    return (
+                      <span
+                        key={feature}
+                        className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[rgba(197,160,89,0.1)] text-[#C5A059] text-sm"
+                      >
+                        <CheckCircle2 className="w-3 h-3" />
+                        {typeof featureLabel === "string" ? featureLabel : feature}
+                      </span>
+                    )
+                  })}
                 </div>
 
                 <Button

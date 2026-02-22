@@ -2,9 +2,15 @@
 
 ## Resumen Ejecutivo
 
-**Estado del proyecto (22 de febrero de 2026):** la base visual y de experiencia está bien construida para un portfolio premium, pero el proyecto aún tiene deuda técnica relevante en arquitectura, tipado, testing y capa backend.
+**Estado del proyecto (22 de febrero de 2026):** la base visual y de experiencia está bien construida para un portfolio premium, pero el proyecto aún tiene deuda técnica relevante en arquitectura, tipado y testing.
 
-El producto actual funciona como **showcase frontend de alto impacto**, con una página principal extensa y rica en componentes, pero con baja separación por dominios y sin pipeline de calidad completo.
+Este proyecto debe tratarse como **blueprint project de marca**, no como landing de conversión. Su objetivo principal es demostrar:
+
+- buen gusto visual consistente con **Anclora Group**,
+- madurez técnica en frontend moderno,
+- capacidad de diseñar experiencias premium para **Anclora Private Estates**.
+
+El producto actual funciona como showcase frontend de alto impacto, con una página principal extensa y rica en componentes, pero con baja separación por dominios y sin pipeline de calidad completo.
 
 ## Arquitectura Técnica
 
@@ -48,6 +54,7 @@ El producto actual funciona como **showcase frontend de alto impacto**, con una 
 - Next.js App Router.
 - TypeScript estricto a nivel general (`strict: true`), aunque con excepciones.
 - Lint operativo y recientemente saneado.
+- Ecosistema de UI y animación apto para demos técnicas de alto nivel.
 
 ### ⚠️ Riesgos y Gaps Actuales
 
@@ -63,11 +70,10 @@ El producto actual funciona como **showcase frontend de alto impacto**, con una 
 - Script `test` apunta a `vitest`, pero `vitest` no está instalado.
 - `type-check` no pasa actualmente (errores de tipos en `src` y `scripts`, más includes amplios de `examples`).
 
-#### 3. Capa backend/API (Alto)
+#### 3. Capa backend/API (Medio)
 
-- API real prácticamente no implementada (solo endpoint base).
-- Formulario de contacto en cliente simula envío y persiste en `localStorage`.
-- Sin rate limiting, sin validación server-side consistente, sin integración de envío real.
+- API real mínima (solo endpoint base).
+- Para blueprint portfolio, backend no es el foco principal, pero conviene un backend "demostrativo" mínimo para credibilidad técnica.
 
 #### 4. Tipado y consistencia (Alto)
 
@@ -112,7 +118,29 @@ El producto actual funciona como **showcase frontend de alto impacto**, con una 
 - Plan para retirar `ignoreBuildErrors: true`.
 - Plan para reactivar `reactStrictMode: true`.
 
-### Fase 2 - Modularización de Frontend (P1 - Muy Alto)
+### Fase 2 - Dirección de Marca y Narrativa Blueprint (P1 - Muy Alto)
+
+**Objetivo:** reforzar la identidad Anclora como sistema visual y narrativo.
+**Duración estimada:** 1-2 semanas.
+
+1. Sistema visual de marca (tokenizado):
+
+- Consolidar tokens en `:root` (color, tipografía, spacing, sombras, motion).
+- Definir variantes de componentes alineadas con lenguaje premium de marca.
+- Eliminar estilos puntuales inconsistentes.
+
+2. Storytelling de blueprint:
+
+- Estructurar el contenido por "capítulos" (visión, producto, inversión, experiencia, proceso).
+- Reforzar microcopy para comunicar sofisticación y criterio tecnológico, no venta directa.
+- Establecer guías de tono para ES/EN.
+
+3. Showcase técnico explícito:
+
+- Añadir secciones o badges de "tecnología aplicada" (arquitectura, performance, accesibilidad).
+- Mostrar decisiones de diseño/tecnología de forma elegante y no invasiva.
+
+### Fase 3 - Modularización de Frontend (P1 - Muy Alto)
 
 **Objetivo:** reducir complejidad y habilitar escalabilidad.
 **Duración estimada:** 2-3 semanas.
@@ -134,28 +162,28 @@ El producto actual funciona como **showcase frontend de alto impacto**, con una 
 - Definir store global (Zustand) solo para estado cross-section.
 - Mantener hooks locales para estado efímero de UI.
 
-### Fase 3 - Backend Funcional y Conversión (P1 - Alto)
+### Fase 4 - Backend Demostrativo y Credibilidad Técnica (P2 - Medio)
 
-**Objetivo:** pasar de demo visual a flujo funcional de leads.
-**Duración estimada:** 2 semanas.
+**Objetivo:** soportar el portfolio con una capa técnica realista, sin convertirlo en producto CRM.
+**Duración estimada:** 1 semana.
 
-1. API de contacto real:
+1. Endpoint de contacto demostrativo:
 
 - Crear endpoint dedicado `POST /api/contact`.
 - Validación con Zod en servidor.
-- Respuestas tipadas y manejo de errores consistente.
+- Respuestas tipadas y manejo de errores consistente para demo.
 
-2. Persistencia de leads:
+2. Persistencia mínima:
 
-- Definir modelo Prisma para leads.
-- Guardar envíos en DB.
+- Definir un modelo simple (`Lead` o `Inquiry`) para mostrar capa full-stack.
+- Mantener scope reducido para no desviar el objetivo de portfolio.
 
-3. Seguridad mínima:
+3. Seguridad base:
 
 - Rate limiting por IP.
 - Sanitización y validación estricta de entrada.
 
-### Fase 4 - Performance y UX Premium (P2 - Medio)
+### Fase 5 - Performance, A11y y Excelencia de Ejecución (P2 - Medio)
 
 **Objetivo:** mejorar percepción, velocidad y calidad visual.
 **Duración estimada:** 1-2 semanas.
@@ -173,9 +201,9 @@ El producto actual funciona como **showcase frontend de alto impacto**, con una 
 3. Accesibilidad y SEO:
 
 - Auditoría WCAG básica (navegación teclado, labels, contraste).
-- Schema.org para contenido principal del portfolio.
+- Schema.org orientado a entidad/marca y proyecto portfolio.
 
-### Fase 5 - Productización y DX (P3 - Medio/Bajo)
+### Fase 6 - Productización y DX (P3 - Medio/Bajo)
 
 **Objetivo:** profesionalizar mantenimiento y colaboración.
 **Duración estimada:** 1 semana.
@@ -199,18 +227,18 @@ El producto actual funciona como **showcase frontend de alto impacto**, con una 
 ## Roadmap Priorizado (Orden de Importancia)
 
 1. **P0**: Testing + Type-check + hardening de build.
-2. **P1**: Modularizar `page.tsx` + API real de contacto + persistencia de leads.
-3. **P2**: Performance de imágenes/charts + accesibilidad + SEO técnico.
+2. **P1**: Dirección visual de marca + storytelling blueprint + modularizar `page.tsx`.
+3. **P2**: Backend demostrativo mínimo + performance + accesibilidad + SEO técnico.
 4. **P3**: CI/CD + documentación + DX y estandarización de scripts.
 
 ## Conclusión
 
-El proyecto ya cumple bien como **portfolio visual premium**, pero para consolidarlo como referencia técnica sólida necesita completar una transición clara de **demo front-heavy** a **arquitectura mantenible con backend y calidad automatizada**.
+El proyecto ya cumple bien como portfolio visual premium. El siguiente salto no es convertirlo en "landing comercial", sino consolidarlo como **blueprint de marca y excelencia técnica** para Anclora Private Estates.
 
 La prioridad correcta es:
 
 - primero **confiabilidad técnica (P0)**,
-- luego **modularidad y backend funcional (P1)**,
-- y finalmente **optimización avanzada y productización (P2/P3)**.
+- luego **dirección de marca + modularidad (P1)**,
+- y finalmente **credibilidad técnica full-stack ligera + optimización avanzada (P2/P3)**.
 
-Con este orden, el proyecto mejora impacto visual sin sacrificar rigor de ingeniería.
+Con este orden, el proyecto refuerza el buen gusto de marca sin sacrificar rigor de ingeniería.
