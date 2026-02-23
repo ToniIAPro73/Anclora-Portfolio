@@ -30,3 +30,7 @@ export const consumeRateLimit = ({
   buckets.set(key, current)
   return { allowed: true, remaining: limit - current.count, resetAt: current.resetAt }
 }
+
+export const resetRateLimitStore = () => {
+  buckets.clear()
+}

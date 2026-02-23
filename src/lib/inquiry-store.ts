@@ -9,21 +9,23 @@ type InquiryRecord = ContactInput & {
 }
 
 const DB_DIR = path.join(process.cwd(), "db")
-const INQUIRIES_FILE = path.join(DB_DIR, "inquiries.json")
+const getInquiriesFile = () => process.env.ANCLORA_INQUIRIES_FILE_PATH || path.join(DB_DIR, "inquiries.json")
 let writeQueue: Promise<void> = Promise.resolve()
 
 const ensureStorage = async () => {
-  await fs.mkdir(DB_DIR, { recursive: true })
+  const inquiriesFile = getInquiriesFile()
+  await fs.mkdir(path.dirname(inquiriesFile), { recursive: true })
   try {
-    await fs.access(INQUIRIES_FILE)
+    await fs.access(inquiriesFile)
   } catch {
-    await fs.writeFile(INQUIRIES_FILE, "[]", "utf-8")
+    await fs.writeFile(inquiriesFile, "[]", "utf-8")
   }
 }
 
 const readInquiries = async (): Promise<InquiryRecord[]> => {
+  const inquiriesFile = getInquiriesFile()
   await ensureStorage()
-  const raw = await fs.readFile(INQUIRIES_FILE, "utf-8")
+  const raw = await fs.readFile(inquiriesFile, "utf-8")
   try {
     const parsed = JSON.parse(raw) as unknown
     return Array.isArray(parsed) ? (parsed as InquiryRecord[]) : []
@@ -33,6 +35,7 @@ const readInquiries = async (): Promise<InquiryRecord[]> => {
 }
 
 export const saveInquiry = async (input: ContactInput, ipAddress: string) => {
+  const inquiriesFile = getInquiriesFile()
   const record: InquiryRecord = {
     ...input,
     id: crypto.randomUUID(),
@@ -43,7 +46,7 @@ export const saveInquiry = async (input: ContactInput, ipAddress: string) => {
   writeQueue = writeQueue.then(async () => {
     const inquiries = await readInquiries()
     inquiries.push(record)
-    await fs.writeFile(INQUIRIES_FILE, JSON.stringify(inquiries, null, 2), "utf-8")
+    await fs.writeFile(inquiriesFile, JSON.stringify(inquiries, null, 2), "utf-8")
   })
 
   await writeQueue
@@ -51,3 +54,13 @@ export const saveInquiry = async (input: ContactInput, ipAddress: string) => {
 }
 
 export const listInquiries = async () => readInquiries()
+
+export const resetInquiryStore = async () => {
+  writeQueue = Promise.resolve()
+  const inquiriesFile = getInquiriesFile()
+  try {
+    await fs.unlink(inquiriesFile)
+  } catch {
+    // no-op
+  }
+}

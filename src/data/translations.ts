@@ -6,7 +6,7 @@ import { Language } from "@/types";
 export const translations = {
   es: {
     nav: {
-      blueprint: "Blueprint",
+      blueprint: "Arquitectura",
       investment: "Inversión",
       features: "Características",
       gallery: "Galería",
@@ -16,14 +16,14 @@ export const translations = {
       contact: "Contacto",
     },
     hero: {
-      badge: "Edición Limitada",
+      badge: "Brand Blueprint",
       title: "La Cúspide del",
       titleAccent: "Mediterráneo",
       subtitle:
-        "Una colección exclusiva de residencias de lujo en Port d'Andratx, Mallorca. Donde la sofisticación encuentra el mar.",
-      cta: "Descubrir Residencias",
-      ctaSecondary: "Solicitar Información",
-      scrollText: "Descubrir más",
+        "Un proyecto blueprint que articula lenguaje de marca, arquitectura digital y criterios de ejecución para Anclora Private Estates.",
+      cta: "Explorar Residencias",
+      ctaSecondary: "Abrir Consulta",
+      scrollText: "Ver arquitectura",
     },
     blueprint: {
       badge: "Blueprint de Marca",
@@ -51,11 +51,11 @@ export const translations = {
       },
     },
     investment: {
-      badge: "Oportunidad de Inversión",
-      title: "El Dashboard del",
-      titleAccent: "Inversor",
+      badge: "Inteligencia de Mercado",
+      title: "Lectura de",
+      titleAccent: "Contexto",
       subtitle:
-        "Datos de mercado y proyecciones que demuestran el excepcional potencial de inversión en Port d'Andratx.",
+        "Indicadores y comparativas presentados como capa analítica del blueprint, con foco en claridad y criterio de decisión.",
       capitalAppreciation: "Apreciación de Capital",
       capitalAppreciationDesc: "Proyección de crecimiento a 5 años",
       rentalYield: "Rentabilidad del Alquiler",
@@ -77,11 +77,11 @@ export const translations = {
       },
     },
     features: {
-      badge: "Amenidades Exclusivas",
-      title: "Diseñado para la",
-      titleAccent: "Excelencia",
+      badge: "Arquitectura de Experiencia",
+      title: "Diseñado con",
+      titleAccent: "Criterio",
       subtitle:
-        "Cada detalle ha sido meticulosamente seleccionado para ofrecer una experiencia de vida sin igual.",
+        "Cada componente combina materialidad, automatización y bienestar para expresar una experiencia premium coherente.",
       categories: {
         smart: "Domótica Inteligente",
         wellness: "Bienestar & Ocio",
@@ -133,10 +133,10 @@ export const translations = {
       },
     },
     gallery: {
-      badge: "Galería Visual",
-      title: "Descubra la",
-      titleAccent: "Experiencia",
-      subtitle: "Imágenes que capturan la esencia del lujo mediterráneo.",
+      badge: "Librería Visual",
+      title: "Dirección de",
+      titleAccent: "Arte",
+      subtitle: "Selección curada para mostrar atmósfera, detalle constructivo y narrativa de marca.",
       categories: {
         all: "Todas",
         interiors: "Interiores",
@@ -146,11 +146,11 @@ export const translations = {
       },
     },
     residences: {
-      badge: "Nuestras Residencias",
-      title: "Seleccione su",
-      titleAccent: "Hogar",
+      badge: "Tipologías Residenciales",
+      title: "Lenguaje de",
+      titleAccent: "Producto",
       subtitle:
-        "Una colección limitada de residencias diseñadas para los más exigentes.",
+        "Unidades modeladas como catálogo premium: superficie, programa, vistas y propuesta de valor por tipología.",
       floor: "Planta",
       sqm: "m²",
       from: "Desde",
@@ -163,7 +163,7 @@ export const translations = {
       solarium: "Solarium",
       parking: "Parking",
       storage: "Trastero",
-      requestInfo: "Solicitar Información",
+      requestInfo: "Abrir Consulta",
       units: {
         penthouse: {
           name: "Penthouse Azure",
@@ -188,7 +188,7 @@ export const translations = {
       title: "Port d'Andratx,",
       titleAccent: "Mallorca",
       subtitle:
-        "Uno de los puertos más exclusivos del Mediterráneo, donde converge la naturaleza virgen con el lujo refinado.",
+        "Contexto territorial de referencia en el Mediterráneo, clave para posicionamiento de marca y narrativa de inversión.",
       highlights: {
         marina: "Club de Vela",
         marinaDesc: "Puerto deportivo con 500 amarres",
@@ -204,9 +204,9 @@ export const translations = {
     },
     faqs: {
       badge: "Preguntas Frecuentes",
-      title: "Resolvemos sus",
-      titleAccent: "Dudas",
-      subtitle: "Información esencial para inversores internacionales.",
+      title: "Marco",
+      titleAccent: "Operativo",
+      subtitle: "Referencias legales y fiscales para lectura internacional del proyecto.",
       q1: "¿Cuál es el proceso de compra para extranjeros?",
       a1: "Los compradores extranjeros pueden adquirir propiedades en España sin restricciones. El proceso requiere NIE (Número de Identificación de Extranjero), cuenta bancaria española y se realiza ante notario. Nuestro equipo legal facilita todo el proceso en su idioma.",
       q2: "¿Qué impuestos aplican a la compra?",
@@ -219,11 +219,11 @@ export const translations = {
       a5: "Todas las residencias incluyen garantía decenal estructural, garantía bienal de instalaciones y garantía anual de acabados. Además, ofrecemos contrato de mantenimiento preventivo opcional.",
     },
     contact: {
-      badge: "Contacto Exclusivo",
-      title: "Solicite su",
-      titleAccent: "Consulta Privada",
+      badge: "Canal Privado",
+      title: "Inicie una",
+      titleAccent: "Consulta Estratégica",
       subtitle:
-        "Nuestro equipo de asesores le atenderá con la máxima discreción y profesionalidad.",
+        "Canal directo para conversaciones de producto, inversión y ejecución con confidencialidad y rigor.",
       form: {
         name: "Nombre completo",
         namePlaceholder: "Su nombre",
@@ -240,16 +240,16 @@ export const translations = {
         },
         message: "Mensaje (opcional)",
         messagePlaceholder: "Cuéntenos sobre sus necesidades...",
-        submit: "Enviar Solicitud",
+        submit: "Enviar Consulta",
         submitting: "Enviando...",
-        success: "¡Solicitud enviada!",
-        successMessage: "Nos pondremos en contacto en menos de 24 horas.",
+        success: "Consulta enviada",
+        successMessage: "Le responderemos en menos de 24 horas hábiles.",
       },
       privacy:
         "Sus datos están protegidos según RGPD. Solo serán utilizados para esta consulta.",
     },
     footer: {
-      tagline: "El cenit del vivir mediterráneo.",
+      tagline: "Blueprint mediterráneo de referencia.",
       address: "Passeig de la Pau, 42",
       city: "Port d'Andratx, Mallorca",
       postcode: "07157",
@@ -274,14 +274,14 @@ export const translations = {
       contact: "Contact",
     },
     hero: {
-      badge: "Limited Edition",
+      badge: "Brand Blueprint",
       title: "The Zenith of",
       titleAccent: "Mediterranean Living",
       subtitle:
-        "An exclusive collection of luxury residences in Port d'Andratx, Mallorca. Where sophistication meets the sea.",
-      cta: "Discover Residences",
-      ctaSecondary: "Request Information",
-      scrollText: "Discover more",
+        "A blueprint project articulating brand language, digital architecture, and delivery standards for Anclora Private Estates.",
+      cta: "Explore Residences",
+      ctaSecondary: "Open Consultation",
+      scrollText: "View architecture",
     },
     blueprint: {
       badge: "Brand Blueprint",
@@ -309,11 +309,11 @@ export const translations = {
       },
     },
     investment: {
-      badge: "Investment Opportunity",
-      title: "The Investor's",
-      titleAccent: "Dashboard",
+      badge: "Market Intelligence",
+      title: "Context",
+      titleAccent: "Signals",
       subtitle:
-        "Market data and projections demonstrating the exceptional investment potential in Port d'Andratx.",
+        "Indicators and benchmarks presented as the analytical layer of the blueprint, focused on clarity and decision criteria.",
       capitalAppreciation: "Capital Appreciation",
       capitalAppreciationDesc: "5-year growth projection",
       rentalYield: "Rental Yield",
@@ -335,11 +335,11 @@ export const translations = {
       },
     },
     features: {
-      badge: "Exclusive Amenities",
-      title: "Designed for",
-      titleAccent: "Excellence",
+      badge: "Experience Architecture",
+      title: "Designed with",
+      titleAccent: "Intent",
       subtitle:
-        "Every detail has been meticulously selected to offer an unparalleled living experience.",
+        "Each component combines materiality, automation, and wellbeing to express a coherent premium experience.",
       categories: {
         smart: "Smart Home",
         wellness: "Wellness & Leisure",
@@ -391,10 +391,10 @@ export const translations = {
       },
     },
     gallery: {
-      badge: "Visual Gallery",
-      title: "Discover the",
-      titleAccent: "Experience",
-      subtitle: "Images capturing the essence of Mediterranean luxury.",
+      badge: "Visual Library",
+      title: "Art",
+      titleAccent: "Direction",
+      subtitle: "Curated selection showcasing atmosphere, construction detail, and brand narrative.",
       categories: {
         all: "All",
         interiors: "Interiors",
@@ -404,11 +404,11 @@ export const translations = {
       },
     },
     residences: {
-      badge: "Our Residences",
-      title: "Select Your",
-      titleAccent: "Home",
+      badge: "Residential Typologies",
+      title: "Product",
+      titleAccent: "Language",
       subtitle:
-        "A limited collection of residences designed for the most discerning.",
+        "Units modeled as a premium catalog: surface, program, views, and value proposition by typology.",
       floor: "Floor",
       sqm: "sqm",
       from: "From",
@@ -421,7 +421,7 @@ export const translations = {
       solarium: "Solarium",
       parking: "Parking",
       storage: "Storage",
-      requestInfo: "Request Information",
+      requestInfo: "Open Consultation",
       units: {
         penthouse: {
           name: "Penthouse Azure",
@@ -446,7 +446,7 @@ export const translations = {
       title: "Port d'Andratx,",
       titleAccent: "Mallorca",
       subtitle:
-        "One of the most exclusive ports in the Mediterranean, where pristine nature meets refined luxury.",
+        "A benchmark Mediterranean context, central to brand positioning and investment narrative.",
       highlights: {
         marina: "Club de Vela",
         marinaDesc: "Marina with 500 moorings",
@@ -462,9 +462,9 @@ export const translations = {
     },
     faqs: {
       badge: "FAQs",
-      title: "We Answer Your",
-      titleAccent: "Questions",
-      subtitle: "Essential information for international investors.",
+      title: "Operational",
+      titleAccent: "Framework",
+      subtitle: "Legal and fiscal references for international project review.",
       q1: "What is the purchase process for foreigners?",
       a1: "Foreign buyers can acquire properties in Spain without restrictions. The process requires NIE (Foreigner Identification Number), Spanish bank account, and is conducted before a notary. Our legal team facilitates the entire process in your language.",
       q2: "What taxes apply to the purchase?",
@@ -477,11 +477,11 @@ export const translations = {
       a5: "All residences include 10-year structural warranty, 2-year installation warranty, and 1-year finish warranty. We also offer optional preventive maintenance contracts.",
     },
     contact: {
-      badge: "Exclusive Contact",
-      title: "Request Your",
-      titleAccent: "Private Consultation",
+      badge: "Private Channel",
+      title: "Start a",
+      titleAccent: "Strategic Consultation",
       subtitle:
-        "Our advisory team will assist you with maximum discretion and professionalism.",
+        "Direct channel for product, investment, and execution conversations with confidentiality and rigor.",
       form: {
         name: "Full name",
         namePlaceholder: "Your name",
@@ -498,16 +498,16 @@ export const translations = {
         },
         message: "Message (optional)",
         messagePlaceholder: "Tell us about your needs...",
-        submit: "Submit Request",
+        submit: "Submit Consultation",
         submitting: "Submitting...",
-        success: "Request sent!",
-        successMessage: "We will contact you within 24 hours.",
+        success: "Consultation sent",
+        successMessage: "We will reply within 24 business hours.",
       },
       privacy:
         "Your data is protected under GDPR. It will only be used for this inquiry.",
     },
     footer: {
-      tagline: "The zenith of Mediterranean living.",
+      tagline: "A benchmark Mediterranean blueprint.",
       address: "Passeig de la Pau, 42",
       city: "Port d'Andratx, Mallorca",
       postcode: "07157",

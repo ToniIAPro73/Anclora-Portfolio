@@ -45,3 +45,4 @@ npm run -s build
 - Include validation output summary.
 - If API behavior changes, update `docs/API.md`.
 - If architecture changes, update `docs/ARCHITECTURE.md`.
+- For releases, follow `docs/RELEASE_CHECKLIST.md`.

@@ -187,7 +187,7 @@ export function ContactSection({
                   variant="outline"
                   className="mt-6 border-[#C5A059] text-[#C5A059]"
                 >
-                  {lang === "es" ? "Enviar otra solicitud" : "Send another request"}
+                  {lang === "es" ? "Enviar otra consulta" : "Send another consultation"}
                 </Button>
               </div>
             ) : (

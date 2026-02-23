@@ -28,7 +28,7 @@ This keeps `src/app/page.tsx` declarative and focused on section composition.
 
 ## API Architecture
 
-- `POST /api/contact`: validates payload with Zod, applies in-memory rate limiting by IP, and persists inquiries with Prisma.
+- `POST /api/contact`: validates payload with Zod, applies in-memory rate limiting by IP, and persists inquiries in file store (`db/inquiries.json`).
 - `GET /api`: basic API metadata endpoint.
 
 ## Data Model

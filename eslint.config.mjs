@@ -62,7 +62,8 @@ const eslintConfig = [
       "skills",
       "coverage/**",
       "scripts/run-eslint.cjs",
-      "scripts/copy-standalone.cjs"
+      "scripts/copy-standalone.cjs",
+      "scripts/check-next-swc-version.cjs"
     ]
   }
 ];

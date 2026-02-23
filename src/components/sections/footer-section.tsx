@@ -35,13 +35,13 @@ export function FooterSection({ t, lang }: { t: FooterText; lang: Language }) {
           <div>
             <h4 className="font-semibold mb-4">Legal</h4>
             <div className="space-y-2 text-sm">
-              <a href="#" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
+              <a href="/legal" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
                 {t.legal}
               </a>
-              <a href="#" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
+              <a href="/privacy" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
                 {t.privacy}
               </a>
-              <a href="#" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
+              <a href="/cookies" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
                 {t.cookies}
               </a>
             </div>
