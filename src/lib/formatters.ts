@@ -1,11 +1,21 @@
 import type { Language } from "@/types"
 
-const EUR_TO_GBP = 0.86
+const DEFAULT_EUR_TO_GBP = 0.86
 const SQM_TO_SQFT = 10.7639
 
 const rounded = (value: number) => Math.round(value)
 
-export const convertEurToGbp = (eurAmount: number) => eurAmount * EUR_TO_GBP
+const resolveEurToGbpRate = () => {
+  const envRate = Number(process.env.NEXT_PUBLIC_EUR_TO_GBP)
+
+  if (!Number.isFinite(envRate) || envRate <= 0) {
+    return DEFAULT_EUR_TO_GBP
+  }
+
+  return envRate
+}
+
+export const convertEurToGbp = (eurAmount: number) => eurAmount * resolveEurToGbpRate()
 
 export const convertSqmToSqft = (sqm: number) => sqm * SQM_TO_SQFT
 
