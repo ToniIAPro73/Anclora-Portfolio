@@ -60,7 +60,9 @@ export function GallerySection({
 
           <motion.div layout className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <AnimatePresence>
-              {filteredImages.map((image, index) => (
+              {filteredImages.map((image, index) => {
+                const isFeatured = index === 0 || index === 5
+                return (
                 <motion.div
                   key={image.src}
                   layout
@@ -69,7 +71,9 @@ export function GallerySection({
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
                   className={`relative overflow-hidden rounded-xl cursor-pointer group ${
-                    index === 0 || index === 5 ? "col-span-2 row-span-2" : ""
+                    isFeatured
+                      ? "col-span-2 row-span-2 min-h-[320px] sm:min-h-[380px]"
+                      : "min-h-[200px] sm:min-h-[220px]"
                   }`}
                   onClick={() => setSelectedGalleryImage(index)}
                 >
@@ -78,7 +82,7 @@ export function GallerySection({
                     alt={image.alt}
                     fill
                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                    className="w-full h-full min-h-[200px] object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                     <div className="absolute bottom-4 left-4">
@@ -86,7 +90,8 @@ export function GallerySection({
                     </div>
                   </div>
                 </motion.div>
-              ))}
+                )
+              })}
             </AnimatePresence>
           </motion.div>
         </div>
