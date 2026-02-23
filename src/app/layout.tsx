@@ -35,14 +35,35 @@ export const metadata: Metadata = {
   title: "Anclora Private Estates | The Zenith of Mediterranean Living",
   description: "Ultra-luxury residences in Port d'Andratx, Mallorca. A limited collection of sophisticated homes offering unparalleled Mediterranean living and exceptional investment potential.",
   keywords: ["luxury real estate", "Mallorca", "Port d'Andratx", "Mediterranean", "investment property", "ultra-luxury"],
-  authors: [{ name: "Andratx Azure Residencies" }],
+  authors: [{ name: "Anclora Private Estates" }],
+  creator: "Anclora Group",
+  metadataBase: new URL("https://anclora-estates.com"),
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Andratx Azure Residencies",
-    description: "The Zenith of Mediterranean Living",
+    title: "Anclora Private Estates | The Zenith of Mediterranean Living",
+    description: "Blueprint portfolio project for premium real estate digital experience by Anclora Group.",
     type: "website",
+    url: "https://anclora-estates.com",
+    siteName: "Anclora Private Estates",
+    images: [
+      {
+        url: "/images/hero/hero-daylight.jpg",
+        width: 1920,
+        height: 1080,
+        alt: "Anclora Private Estates",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Anclora Private Estates",
+    description: "Blueprint project showcasing premium digital execution for luxury real estate.",
+    images: ["/images/hero/hero-daylight.jpg"],
   },
 };
 
@@ -51,11 +72,42 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Anclora Private Estates",
+    url: "https://anclora-estates.com",
+    logo: "https://anclora-estates.com/logo.png",
+    parentOrganization: {
+      "@type": "Organization",
+      name: "Anclora Group",
+    },
+    areaServed: "Mallorca, Spain",
+  };
+
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: "Anclora Private Estates Blueprint Project",
+    creator: "Anclora Group",
+    inLanguage: ["es", "en"],
+    description:
+      "Portfolio blueprint project demonstrating premium digital design and engineering for luxury real estate.",
+  };
+
   return (
     <html lang="es" suppressHydrationWarning>
       <body
         className={`${cormorantGaramond.variable} ${montserrat.variable} ${allura.variable} ${inter.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
+        />
         {children}
         <Toaster />
       </body>

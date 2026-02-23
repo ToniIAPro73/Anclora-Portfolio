@@ -1,100 +1,196 @@
-import { useState, useCallback } from "react";
-import { ContactFormData } from "@/types";
+import { useCallback, useState, type FormEvent } from "react"
+import type { LeadData, Language } from "@/types"
 
-export const useContactForm = () => {
-  const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
-    email: "",
-    phone: "",
-    budget: 5000000,
-    interest: "investment",
-    message: "",
-  });
+type ToastPayload = {
+  title: string
+  description: string
+  variant?: "default" | "destructive"
+  className?: string
+}
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+type UseContactFormOptions = {
+  lang?: Language
+  initialBudget?: number
+  successTitle?: string
+  successDescription?: string
+  validationTitle?: string
+  validationDescription?: string
+  successToastClassName?: string
+  toast?: (payload: ToastPayload) => void
+}
 
-  // Load saved data on mount
-  const loadInitialData = useCallback(() => {
-    if (typeof window === "undefined") return;
-    const savedData = localStorage.getItem("anclora_lead_data");
-    if (savedData) {
-      try {
-        const parsed = JSON.parse(savedData);
-        setFormData({
-          name: parsed.name || "",
-          email: parsed.email || "",
-          phone: parsed.phone || "",
-          budget: parsed.budget || 5000000,
-          interest: parsed.interest || "investment",
-          message: parsed.message || "",
-        });
-      } catch {
-        // Use defaults if parsing fails
-      }
+export type ContactFormState = {
+  name: string
+  email: string
+  phone: string
+  interest: "investment" | "residence" | "vacation"
+  message: string
+}
+
+const DEFAULT_BUDGET = 5000000
+
+const defaultFormData: ContactFormState = {
+  name: "",
+  email: "",
+  phone: "",
+  interest: "investment",
+  message: "",
+}
+
+type SavedLead = Partial<LeadData>
+
+const parseSavedLead = (): SavedLead => {
+  if (typeof window === "undefined") return {}
+
+  const raw = localStorage.getItem("anclora_lead_data")
+  if (!raw) return {}
+
+  try {
+    const parsed = JSON.parse(raw)
+    return typeof parsed === "object" && parsed !== null ? (parsed as SavedLead) : {}
+  } catch {
+    return {}
+  }
+}
+
+export const useContactForm = (options: UseContactFormOptions = {}) => {
+  const {
+    lang = "es",
+    initialBudget = DEFAULT_BUDGET,
+    successTitle = "",
+    successDescription = "",
+    validationTitle = "",
+    validationDescription = "",
+    successToastClassName = "bg-[#0F172A] text-[#F8F5F2] border-[#C5A059]",
+    toast,
+  } = options
+
+  const [formData, setFormData] = useState<ContactFormState>(() => {
+    const saved = parseSavedLead()
+    return {
+      name: typeof saved.name === "string" ? saved.name : defaultFormData.name,
+      email: typeof saved.email === "string" ? saved.email : defaultFormData.email,
+      phone: typeof saved.phone === "string" ? saved.phone : defaultFormData.phone,
+      interest:
+        saved.interest === "investment" || saved.interest === "residence" || saved.interest === "vacation"
+          ? saved.interest
+          : defaultFormData.interest,
+      message: typeof saved.message === "string" ? saved.message : defaultFormData.message,
     }
-  }, []);
+  })
 
-  const updateField = useCallback(
-    (field: keyof ContactFormData, value: any) => {
-      setFormData((prev) => ({ ...prev, [field]: value }));
-    },
-    [],
-  );
+  const [budgetValue, setBudgetValue] = useState<number[]>(() => {
+    const saved = parseSavedLead()
+    const budget = typeof saved.budget === "number" ? saved.budget : initialBudget
+    return [budget]
+  })
+
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
 
   const validateForm = useCallback(() => {
-    if (!formData.name.trim()) return false;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) return false;
-    if (!formData.phone.trim()) return false;
-    return true;
-  }, [formData]);
+    if (!formData.name.trim()) return false
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) return false
+    if (!formData.phone.trim()) return false
+    return true
+  }, [formData])
 
-  const handleSubmit = useCallback(
-    async (e: React.FormEvent) => {
-      e.preventDefault();
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault()
 
-      if (!validateForm()) {
-        throw new Error("Form validation failed");
-      }
+    if (!validateForm()) {
+      toast?.({
+        title: validationTitle,
+        description: validationDescription,
+        variant: "destructive",
+      })
+      return
+    }
 
-      setIsSubmitting(true);
+    setIsSubmitting(true)
 
-      // Save to localStorage
-      const leadData = {
-        ...formData,
-        timestamp: new Date().toISOString(),
-      };
-      localStorage.setItem("anclora_lead_data", JSON.stringify(leadData));
+    const leadData: LeadData = {
+      ...formData,
+      budget: budgetValue[0],
+      timestamp: new Date().toISOString(),
+    }
+    localStorage.setItem("anclora_lead_data", JSON.stringify(leadData))
 
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        budget: budgetValue[0],
+        interest: formData.interest,
+        message: formData.message,
+      }),
+    })
 
-      setIsSubmitting(false);
-      setIsSuccess(true);
+    if (!response.ok) {
+      const fallbackError =
+        lang === "es"
+          ? "No se pudo enviar la solicitud. Inténtelo de nuevo."
+          : "Unable to submit request. Please try again."
+      const payload = (await response.json().catch(() => null)) as { error?: string } | null
+
+      setIsSubmitting(false)
+      toast?.({
+        title: validationTitle || fallbackError,
+        description: payload?.error || fallbackError,
+        variant: "destructive",
+      })
+      return
+    }
+
+    setIsSubmitting(false)
+    setIsSuccess(true)
+
+    toast?.({
+      title: successTitle,
+      description: successDescription,
+      className: successToastClassName,
+    })
+  }
+
+  const formatPrice = useCallback(
+    (price: number) =>
+      new Intl.NumberFormat(lang === "es" ? "es-ES" : "en-US", {
+        style: "currency",
+        currency: "EUR",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      }).format(price),
+    [lang]
+  )
+
+  const updateField = useCallback(
+    <K extends keyof ContactFormState>(field: K, value: ContactFormState[K]) => {
+      setFormData((previous) => ({ ...previous, [field]: value }))
     },
-    [formData, validateForm],
-  );
+    []
+  )
 
   const resetForm = useCallback(() => {
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      budget: 5000000,
-      interest: "investment",
-      message: "",
-    });
-    setIsSuccess(false);
-  }, []);
+    setIsSuccess(false)
+  }, [])
 
   return {
     formData,
+    setFormData,
+    budgetValue,
+    setBudgetValue,
     isSubmitting,
     isSuccess,
-    loadInitialData,
-    updateField,
+    setIsSuccess,
     validateForm,
     handleSubmit,
+    formatPrice,
+    updateField,
     resetForm,
-  };
-};
+  }
+}

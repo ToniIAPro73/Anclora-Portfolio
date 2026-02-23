@@ -6,6 +6,7 @@ import { Language } from "@/types";
 export const translations = {
   es: {
     nav: {
+      blueprint: "Blueprint",
       investment: "Inversión",
       features: "Características",
       gallery: "Galería",
@@ -23,6 +24,31 @@ export const translations = {
       cta: "Descubrir Residencias",
       ctaSecondary: "Solicitar Información",
       scrollText: "Descubrir más",
+    },
+    blueprint: {
+      badge: "Blueprint de Marca",
+      title: "Tecnología con",
+      titleAccent: "Intención",
+      subtitle:
+        "Este proyecto demuestra cómo Anclora Private Estates combina criterio estético, arquitectura moderna y ejecución rigurosa.",
+      pillars: {
+        architecture: {
+          title: "Arquitectura Modular",
+          desc: "Estructura por secciones y separación clara de contenido, lógica y presentación para evolucionar con control.",
+        },
+        performance: {
+          title: "Rendimiento Premium",
+          desc: "Carga optimizada y animaciones fluidas para mantener una experiencia elegante en desktop y mobile.",
+        },
+        quality: {
+          title: "Calidad Verificable",
+          desc: "Lint, type-check, tests y build integrados como estándar mínimo de ingeniería confiable.",
+        },
+        brand: {
+          title: "Sistema de Marca",
+          desc: "Tokens visuales consistentes en color, tipografía y ritmo para una identidad digital sofisticada.",
+        },
+      },
     },
     investment: {
       badge: "Oportunidad de Inversión",
@@ -238,6 +264,7 @@ export const translations = {
   },
   en: {
     nav: {
+      blueprint: "Blueprint",
       investment: "Investment",
       features: "Features",
       gallery: "Gallery",
@@ -255,6 +282,31 @@ export const translations = {
       cta: "Discover Residences",
       ctaSecondary: "Request Information",
       scrollText: "Discover more",
+    },
+    blueprint: {
+      badge: "Brand Blueprint",
+      title: "Technology with",
+      titleAccent: "Intent",
+      subtitle:
+        "This project demonstrates how Anclora Private Estates combines aesthetic judgment, modern architecture, and rigorous execution.",
+      pillars: {
+        architecture: {
+          title: "Modular Architecture",
+          desc: "Section-based structure and clear separation of content, logic, and presentation for controlled evolution.",
+        },
+        performance: {
+          title: "Premium Performance",
+          desc: "Optimized loading and fluid motion to preserve an elegant experience on desktop and mobile.",
+        },
+        quality: {
+          title: "Verifiable Quality",
+          desc: "Lint, type-check, tests, and build integrated as the minimum standard for reliable engineering.",
+        },
+        brand: {
+          title: "Brand System",
+          desc: "Consistent visual tokens across color, typography, and rhythm for a sophisticated digital identity.",
+        },
+      },
     },
     investment: {
       badge: "Investment Opportunity",

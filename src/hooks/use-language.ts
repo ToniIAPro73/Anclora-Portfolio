@@ -1,35 +1,29 @@
-import { useState, useCallback, useEffect } from "react";
-import { Language } from "@/types";
+import { useCallback, useEffect, useState } from "react"
+import type { Language } from "@/types"
+
+const resolveInitialLanguage = (): Language => {
+  if (typeof window === "undefined") return "es"
+
+  const saved = localStorage.getItem("anclora_language")
+  if (saved === "es" || saved === "en") return saved
+
+  return navigator.language.startsWith("en") ? "en" : "es"
+}
 
 export const useLanguage = () => {
-  // Load saved language on mount
-  const getInitialLanguage = (): Language => {
-    if (typeof window === "undefined") return "es";
-    const savedLang = localStorage.getItem("anclora_language");
-    if (savedLang && (savedLang === "es" || savedLang === "en")) {
-      return savedLang as Language;
-    } else {
-      // Detect browser language
-      const browserLang = navigator.language;
-      return browserLang.startsWith("en") ? "en" : "es";
-    }
-  };
-
-  const [language, setLanguage] = useState<Language>(getInitialLanguage);
+  const [lang, setLang] = useState<Language>(resolveInitialLanguage)
 
   useEffect(() => {
-    // Save language preference
-    localStorage.setItem("anclora_language", language);
-  }, [language]);
+    localStorage.setItem("anclora_language", lang)
+  }, [lang])
 
-  // Save language preference
-  const changeLanguage = useCallback((lang: Language) => {
-    setLanguage(lang);
-    localStorage.setItem("anclora_language", lang);
-  }, []);
+  const toggleLanguage = useCallback(() => {
+    setLang((previous) => (previous === "es" ? "en" : "es"))
+  }, [])
 
   return {
-    language,
-    changeLanguage,
-  };
-};
+    lang,
+    setLang,
+    toggleLanguage,
+  }
+}

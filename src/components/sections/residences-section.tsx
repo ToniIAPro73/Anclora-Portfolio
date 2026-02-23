@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { ArrowRight, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { SectionHeading } from "@/components/sections/section-heading"
@@ -105,9 +106,11 @@ export function ResidencesSection({
             className="bg-[#FAF9F6] rounded-2xl border border-[rgba(15,23,42,0.05)] overflow-hidden"
           >
             <div className="relative h-64 lg:h-80">
-              <img
+              <Image
                 src={selectedUnit.image}
                 alt={t.units[selectedUnit.id]?.name ?? selectedUnit.id}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/60 to-transparent" />

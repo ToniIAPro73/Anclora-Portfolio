@@ -1,4 +1,6 @@
+import type { Dispatch, SetStateAction } from "react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { Mail, MapPin, Phone, ArrowRight, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -58,7 +60,7 @@ type ContactFormState = {
   name: string
   email: string
   phone: string
-  interest: string
+  interest: "investment" | "residence" | "vacation"
   message: string
 }
 
@@ -67,9 +69,9 @@ type ContactSectionProps = {
   tFooter: FooterText
   lang: Language
   formData: ContactFormState
-  setFormData: (value: ContactFormState) => void
+  setFormData: Dispatch<SetStateAction<ContactFormState>>
   budgetValue: number[]
-  setBudgetValue: (value: number[]) => void
+  setBudgetValue: Dispatch<SetStateAction<number[]>>
   formatPrice: (price: number) => string
   isSubmitting: boolean
   isSuccess: boolean
@@ -148,9 +150,11 @@ export function ContactSection({
               viewport={{ once: true }}
               className="mt-10 relative h-64 rounded-xl overflow-hidden"
             >
-              <img
+              <Image
                 src="/images/lifestyle/marina.png"
                 alt="Port d'Andratx Marina"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/60 to-transparent" />
@@ -250,7 +254,9 @@ export function ContactSection({
                   <Label htmlFor="interest">{tContact.form.interest}</Label>
                   <Select
                     value={formData.interest}
-                    onValueChange={(value) => setFormData({ ...formData, interest: value })}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, interest: value as ContactFormState["interest"] })
+                    }
                   >
                     <SelectTrigger className="mt-2 bg-[#FAF9F6] border-[rgba(15,23,42,0.1)]">
                       <SelectValue />

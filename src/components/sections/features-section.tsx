@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import Image from "next/image"
 import {
   CheckCircle2,
   Dumbbell,
@@ -123,7 +124,13 @@ export function FeaturesSection({ t, lang }: { t: FeaturesText; lang: Language }
                 viewport={{ once: true }}
                 className="relative h-64 rounded-xl overflow-hidden"
               >
-                <img src="/images/amenities/security.png" alt="Security" className="w-full h-full object-cover" />
+                <Image
+                  src="/images/amenities/security.png"
+                  alt="Security"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/60 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="flex items-center gap-2 text-white">

@@ -22,8 +22,7 @@ const eslintConfig = [
   {
     files: ["src/app/page.tsx"],
     rules: {
-      "@typescript-eslint/no-unused-vars": "off",
-      "@next/next/no-img-element": "off"
+      "@typescript-eslint/no-unused-vars": "off"
     }
   },
   {
@@ -31,10 +30,7 @@ const eslintConfig = [
       "src/components/ui/*chart*.tsx",
       "src/components/ui/advanced-*.tsx",
       "src/components/ui/animated-counter.tsx",
-      "src/components/ui/interactive-3d-gallery.tsx",
-      "src/components/sections/residences-section.tsx",
-      "src/components/sections/contact-section.tsx",
-      "src/components/sections/features-section.tsx"
+      "src/components/ui/interactive-3d-gallery.tsx"
     ],
     rules: {
       "@typescript-eslint/no-unused-vars": "off",

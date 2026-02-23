@@ -1,52 +1,13 @@
-import { useState, useCallback } from "react";
-import { ResidenceUnit } from "@/types";
-import { residenceUnits } from "@/data/residences";
+import { useState } from "react"
+import { residenceUnits } from "@/data/residence-units"
+import type { ResidenceUnit } from "@/types"
 
-export const useResidenceSelection = () => {
-  const [selectedUnit, setSelectedUnit] = useState<ResidenceUnit>(
-    residenceUnits[0],
-  );
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-
-  const selectUnit = useCallback((unit: ResidenceUnit) => {
-    setSelectedUnit(unit);
-  }, []);
-
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("es-ES", {
-      style: "currency",
-      currency: "EUR",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(price);
-  };
-
-  const getUnitFeatures = (features: string[]) => {
-    const featureLabels = {
-      seaView: "Vista al Mar",
-      mountainView: "Vista a la Montaña",
-      privatePool: "Piscina Privada",
-      solarium: "Solarium",
-      parking: "Parking",
-      storage: "Trastero",
-    };
-
-    return features.map(
-      (feature) =>
-        featureLabels[feature as keyof typeof featureLabels] || feature,
-    );
-  };
+export const useResidenceSelection = (units: ResidenceUnit[] = residenceUnits) => {
+  const [selectedUnit, setSelectedUnit] = useState<ResidenceUnit>(units[0])
 
   return {
+    units,
     selectedUnit,
-    residenceUnits,
-    selectUnit,
-    formatPrice,
-    getUnitFeatures,
-    isSubmitting,
-    setIsSubmitting,
-    isSuccess,
-    setIsSuccess,
-  };
-};
+    setSelectedUnit,
+  }
+}
