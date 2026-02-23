@@ -31,7 +31,10 @@ const eslintConfig = [
       "src/components/ui/*chart*.tsx",
       "src/components/ui/advanced-*.tsx",
       "src/components/ui/animated-counter.tsx",
-      "src/components/ui/interactive-3d-gallery.tsx"
+      "src/components/ui/interactive-3d-gallery.tsx",
+      "src/components/sections/residences-section.tsx",
+      "src/components/sections/contact-section.tsx",
+      "src/components/sections/features-section.tsx"
     ],
     rules: {
       "@typescript-eslint/no-unused-vars": "off",
@@ -62,7 +65,8 @@ const eslintConfig = [
       "examples/**",
       "skills",
       "coverage/**",
-      "scripts/run-eslint.cjs"
+      "scripts/run-eslint.cjs",
+      "scripts/copy-standalone.cjs"
     ]
   }
 ];

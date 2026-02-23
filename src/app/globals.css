@@ -47,88 +47,88 @@
 
 :root {
   --radius: 0.625rem;
-  
+
   /* Luxury Mediterranean Palette */
-  --navy: #0F172A;
-  --azure: #1E293B;
-  --ivory: #F8F5F2;
-  --cream: #FAF9F6;
-  --gold: #C5A059;
-  --gold-light: #D4B77A;
-  --gold-dark: #A8893D;
-  
+  --navy: #0f172a;
+  --azure: #1e293b;
+  --ivory: #f8f5f2;
+  --cream: #faf9f6;
+  --gold: #c5a059;
+  --gold-light: #d4b77a;
+  --gold-dark: #a8893d;
+
   /* Base theme colors */
-  --background: #F8F5F2;
-  --foreground: #0F172A;
-  --card: #FAF9F6;
-  --card-foreground: #0F172A;
-  --popover: #FAF9F6;
-  --popover-foreground: #0F172A;
-  --primary: #0F172A;
-  --primary-foreground: #FAF9F6;
-  --secondary: #F8F5F2;
-  --secondary-foreground: #0F172A;
-  --muted: #E8E4E0;
-  --muted-foreground: #64748B;
-  --accent: #C5A059;
-  --accent-foreground: #0F172A;
-  --destructive: #DC2626;
+  --background: #f8f5f2;
+  --foreground: #0f172a;
+  --card: #faf9f6;
+  --card-foreground: #0f172a;
+  --popover: #faf9f6;
+  --popover-foreground: #0f172a;
+  --primary: #0f172a;
+  --primary-foreground: #faf9f6;
+  --secondary: #f8f5f2;
+  --secondary-foreground: #0f172a;
+  --muted: #e8e4e0;
+  --muted-foreground: #64748b;
+  --accent: #c5a059;
+  --accent-foreground: #0f172a;
+  --destructive: #dc2626;
   --border: rgba(15, 23, 42, 0.1);
   --input: rgba(15, 23, 42, 0.1);
-  --ring: #C5A059;
-  
+  --ring: #c5a059;
+
   /* Chart colors */
-  --chart-1: #C5A059;
-  --chart-2: #1E293B;
-  --chart-3: #0F172A;
-  --chart-4: #D4B77A;
-  --chart-5: #64748B;
-  
+  --chart-1: #c5a059;
+  --chart-2: #1e293b;
+  --chart-3: #0f172a;
+  --chart-4: #d4b77a;
+  --chart-5: #64748b;
+
   /* Sidebar */
-  --sidebar: #FAF9F6;
-  --sidebar-foreground: #0F172A;
-  --sidebar-primary: #0F172A;
-  --sidebar-primary-foreground: #FAF9F6;
-  --sidebar-accent: #C5A059;
-  --sidebar-accent-foreground: #0F172A;
+  --sidebar: #faf9f6;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: #0f172a;
+  --sidebar-primary-foreground: #faf9f6;
+  --sidebar-accent: #c5a059;
+  --sidebar-accent-foreground: #0f172a;
   --sidebar-border: rgba(15, 23, 42, 0.1);
-  --sidebar-ring: #C5A059;
+  --sidebar-ring: #c5a059;
 }
 
 .dark {
-  --background: #0F172A;
-  --foreground: #F8F5F2;
-  --card: #1E293B;
-  --card-foreground: #F8F5F2;
-  --popover: #1E293B;
-  --popover-foreground: #F8F5F2;
-  --primary: #C5A059;
-  --primary-foreground: #0F172A;
-  --secondary: #1E293B;
-  --secondary-foreground: #F8F5F2;
+  --background: #0f172a;
+  --foreground: #f8f5f2;
+  --card: #1e293b;
+  --card-foreground: #f8f5f2;
+  --popover: #1e293b;
+  --popover-foreground: #f8f5f2;
+  --primary: #c5a059;
+  --primary-foreground: #0f172a;
+  --secondary: #1e293b;
+  --secondary-foreground: #f8f5f2;
   --muted: #334155;
-  --muted-foreground: #94A3B8;
-  --accent: #C5A059;
-  --accent-foreground: #0F172A;
-  --destructive: #EF4444;
+  --muted-foreground: #94a3b8;
+  --accent: #c5a059;
+  --accent-foreground: #0f172a;
+  --destructive: #ef4444;
   --border: rgba(248, 245, 242, 0.1);
   --input: rgba(248, 245, 242, 0.1);
-  --ring: #C5A059;
-  
-  --chart-1: #C5A059;
-  --chart-2: #D4B77A;
-  --chart-3: #A8893D;
-  --chart-4: #F8F5F2;
-  --chart-5: #94A3B8;
-  
-  --sidebar: #1E293B;
-  --sidebar-foreground: #F8F5F2;
-  --sidebar-primary: #C5A059;
-  --sidebar-primary-foreground: #0F172A;
-  --sidebar-accent: #C5A059;
-  --sidebar-accent-foreground: #0F172A;
+  --ring: #c5a059;
+
+  --chart-1: #c5a059;
+  --chart-2: #d4b77a;
+  --chart-3: #a8893d;
+  --chart-4: #f8f5f2;
+  --chart-5: #94a3b8;
+
+  --sidebar: #1e293b;
+  --sidebar-foreground: #f8f5f2;
+  --sidebar-primary: #c5a059;
+  --sidebar-primary-foreground: #0f172a;
+  --sidebar-accent: #c5a059;
+  --sidebar-accent-foreground: #0f172a;
   --sidebar-border: rgba(248, 245, 242, 0.1);
-  --sidebar-ring: #C5A059;
+  --sidebar-ring: #c5a059;
 }
 
 @layer base {
@@ -139,7 +139,12 @@
     @apply bg-background text-foreground;
     font-family: var(--font-montserrat), sans-serif;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-cormorant), serif;
   }
 }
@@ -230,4 +235,24 @@ html {
 /* Serif font for headings */
 .font-serif {
   font-family: var(--font-cormorant), serif;
+}
+
+/* Anclora blueprint section primitives */
+.ap-section {
+  @apply py-20 lg:py-32;
+}
+
+.ap-surface-ivory {
+  background: var(--ivory);
+  color: var(--navy);
+}
+
+.ap-surface-cream {
+  background: var(--cream);
+  color: var(--navy);
+}
+
+.ap-surface-navy {
+  background: var(--navy);
+  color: var(--ivory);
 }
