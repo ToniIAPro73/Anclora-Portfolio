@@ -1,5 +1,6 @@
 import { useCallback, useState, type FormEvent } from "react"
 import type { LeadData, Language } from "@/types"
+import { formatPriceFromEur } from "@/lib/formatters"
 
 type ToastPayload = {
   title: string
@@ -158,13 +159,7 @@ export const useContactForm = (options: UseContactFormOptions = {}) => {
   }
 
   const formatPrice = useCallback(
-    (price: number) =>
-      new Intl.NumberFormat(lang === "es" ? "es-ES" : "en-US", {
-        style: "currency",
-        currency: "EUR",
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      }).format(price),
+    (price: number) => formatPriceFromEur(lang, price),
     [lang]
   )
 

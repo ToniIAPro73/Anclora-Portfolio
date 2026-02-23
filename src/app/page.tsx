@@ -38,6 +38,7 @@ export default function AndratxAzureResidencies() {
     setIsSuccess,
     handleSubmit,
     formatPrice,
+    formatArea,
   } = useHomepageController();
 
   return (
@@ -71,6 +72,7 @@ export default function AndratxAzureResidencies() {
         selectedUnit={selectedUnit}
         onSelectUnit={setSelectedUnit}
         formatPrice={formatPrice}
+        formatArea={formatArea}
         onRequestInfo={() => scrollToSection('contact')}
       />
 

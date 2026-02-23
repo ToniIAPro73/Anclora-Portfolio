@@ -3,6 +3,7 @@ import { useRef } from "react"
 import { BarChart3, PieChart, TrendingUp } from "lucide-react"
 import { SectionHeading } from "@/components/sections/section-heading"
 import type { Translations } from "@/data/translations"
+import { convertEurPerSqmToGbpPerSqft } from "@/lib/formatters"
 
 type InvestmentText = Translations["es"]["investment"]
 type Language = "es" | "en"
@@ -140,10 +141,12 @@ const LineChart = ({
 
 const BarChart = ({
   data,
+  lang,
   width = 400,
   height = 200,
 }: {
   data: { label: string; value: number }[]
+  lang: Language
   width?: number
   height?: number
 }) => {
@@ -172,7 +175,10 @@ const BarChart = ({
           const y = index * (barHeight + labelHeight + barGap)
           const barWidth = (item.value / maxValue) * (width - 70)
           const isSelected = index === 0
-          const displayValue = `€${(item.value / 1000).toFixed(0)}k`
+          const displayValue =
+            lang === "es"
+              ? `${new Intl.NumberFormat("es-ES").format(Math.round(item.value))} €`
+              : `£ ${new Intl.NumberFormat("en-GB").format(Math.round(item.value))}`
 
           return (
             <g key={index}>
@@ -223,6 +229,16 @@ const BarChart = ({
 }
 
 export function InvestmentSection({ t, lang }: { t: InvestmentText; lang: Language }) {
+  const marketData = [
+    { label: t.locations.andratx, value: 8500 },
+    { label: t.locations.ibiza, value: 12000 },
+    { label: t.locations.marbella, value: 9800 },
+    { label: t.locations.stTropez, value: 15000 },
+  ].map((entry) => ({
+    label: entry.label,
+    value: lang === "es" ? entry.value : convertEurPerSqmToGbpPerSqft(entry.value),
+  }))
+
   return (
     <section id="investment" className="ap-section ap-surface-ivory">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -339,18 +355,16 @@ export function InvestmentSection({ t, lang }: { t: InvestmentText; lang: Langua
 
             <div className="h-48">
               <BarChart
-                data={[
-                  { label: t.locations.andratx, value: 8500 },
-                  { label: t.locations.ibiza, value: 12000 },
-                  { label: t.locations.marbella, value: 9800 },
-                  { label: t.locations.stTropez, value: 15000 },
-                ]}
+                data={marketData}
+                lang={lang}
                 width={300}
                 height={180}
               />
             </div>
 
-            <div className="mt-4 text-sm text-[#64748B]">{t.price}/m² • Q4 2024</div>
+            <div className="mt-4 text-sm text-[#64748B]">
+              {lang === "es" ? `${t.price}/m²` : `${t.price}/sq ft`} • Q4 2024
+            </div>
           </motion.div>
         </div>
       </div>

@@ -27,6 +27,7 @@ type ResidencesSectionProps = {
   selectedUnit: ResidenceUnit
   onSelectUnit: (unit: ResidenceUnit) => void
   formatPrice: (price: number) => string
+  formatArea: (sqm: number) => string
   onRequestInfo: () => void
 }
 
@@ -36,6 +37,7 @@ export function ResidencesSection({
   selectedUnit,
   onSelectUnit,
   formatPrice,
+  formatArea,
   onRequestInfo,
 }: ResidencesSectionProps) {
   return (
@@ -86,7 +88,7 @@ export function ResidencesSection({
                 </div>
                 <div className="flex flex-wrap gap-4 text-sm">
                   <span className={selectedUnit.id === unit.id ? "text-[#94A3B8]" : "text-[#64748B]"}>
-                    {unit.sqm} {t.sqm}
+                    {formatArea(unit.sqm)} {t.sqm}
                   </span>
                   <span className={selectedUnit.id === unit.id ? "text-[#94A3B8]" : "text-[#64748B]"}>
                     {unit.bedrooms} {t.bedrooms}
@@ -140,13 +142,11 @@ export function ResidencesSection({
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="p-4 bg-[#F8F5F2] rounded-lg">
                   <span className="text-sm text-[#64748B]">{t.sqm}</span>
-                  <p className="text-xl font-semibold">{selectedUnit.sqm}</p>
+                  <p className="text-xl font-semibold">{formatArea(selectedUnit.sqm)}</p>
                 </div>
                 <div className="p-4 bg-[#F8F5F2] rounded-lg">
                   <span className="text-sm text-[#64748B]">{t.terrace}</span>
-                  <p className="text-xl font-semibold">
-                    {selectedUnit.terrace} {t.sqm}
-                  </p>
+                  <p className="text-xl font-semibold">{formatArea(selectedUnit.terrace)} {t.sqm}</p>
                 </div>
                 <div className="p-4 bg-[#F8F5F2] rounded-lg">
                   <span className="text-sm text-[#64748B]">{t.bedrooms}</span>

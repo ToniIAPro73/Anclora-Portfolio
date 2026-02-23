@@ -243,9 +243,9 @@ export function ContactSection({
                       className="w-full"
                     />
                     <div className="flex justify-between mt-2 text-sm text-[#64748B]">
-                      <span>€2M</span>
+                      <span>{formatPrice(2000000)}</span>
                       <span className="font-semibold text-[#C5A059]">{formatPrice(budgetValue[0])}</span>
-                      <span>€15M</span>
+                      <span>{formatPrice(15000000)}</span>
                     </div>
                   </div>
                 </div>

@@ -6,6 +6,7 @@ import { useResidenceSelection } from "@/hooks/use-residence-selection"
 import { useSectionNavigation } from "@/hooks/use-section-navigation"
 import { useFaqItems } from "@/hooks/use-faq-items"
 import { translations } from "@/data/translations"
+import { formatAreaFromSqm } from "@/lib/formatters"
 
 export const useHomepageController = () => {
   const { lang, toggleLanguage } = useLanguage()
@@ -67,5 +68,6 @@ export const useHomepageController = () => {
     setIsSuccess,
     handleSubmit,
     formatPrice,
+    formatArea: (sqm: number) => formatAreaFromSqm(lang, sqm),
   }
 }

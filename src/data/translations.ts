@@ -410,7 +410,7 @@ export const translations = {
       subtitle:
         "Units modeled as a premium catalog: surface, program, views, and value proposition by typology.",
       floor: "Floor",
-      sqm: "sqm",
+      sqm: "sq ft",
       from: "From",
       bedrooms: "Bedrooms",
       bathrooms: "Bathrooms",
