@@ -24,23 +24,45 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection }: TopN
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-[rgba(248,245,242,0.12)]">
+    <nav
+      aria-label={lang === "es" ? "Navegación principal" : "Main navigation"}
+      className="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-[rgba(248,245,242,0.12)]"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <motion.div
+          <motion.button
+            type="button"
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => handleGoTo("hero")}
             whileHover={{ scale: 1.02 }}
+            aria-label={lang === "es" ? "Ir al inicio" : "Go to top section"}
           >
             <Image src="/logo.png" alt="Anclora Private Estates" width={40} height={40} className="w-10 h-10 object-contain" />
             <div>
               <span className="font-serif text-xl font-semibold tracking-tight text-[#F8F5F2]">Anclora</span>
               <span className="font-script text-[#C5A059] text-base ml-1">Private Estates</span>
             </div>
-          </motion.div>
+          </motion.button>
 
           <div className="flex items-center gap-3">
+            <div className="hidden xl:flex items-center gap-1 mr-2">
+              {Object.entries(tNav)
+                .filter(([key]) => key !== "contact")
+                .slice(0, 4)
+                .map(([key, label]) => (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => handleGoTo(key)}
+                    className="px-3 py-2 text-sm font-medium text-[#CBD5E1] hover:text-[#F8F5F2] transition-colors rounded-md hover:bg-[rgba(248,245,242,0.08)]"
+                  >
+                    {label}
+                  </button>
+                ))}
+            </div>
+
             <button
+              type="button"
               onClick={onToggleLanguage}
               aria-label={lang === "es" ? "Cambiar idioma" : "Change language"}
               className="flex items-center gap-1.5 text-sm font-medium text-[#CBD5E1] hover:text-[#F8F5F2] transition-colors"
@@ -58,6 +80,7 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection }: TopN
 
             <div className="relative">
               <button
+                type="button"
                 onClick={() => setMobileMenuOpen((value) => !value)}
                 aria-expanded={mobileMenuOpen}
                 aria-controls="main-navigation-menu"
@@ -83,6 +106,7 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection }: TopN
                       .map(([key, label], index) => (
                         <motion.button
                           key={key}
+                          type="button"
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.05 }}
@@ -95,6 +119,7 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection }: TopN
                       ))}
                     <div className="mt-2 pt-2 border-t border-[rgba(248,245,242,0.12)]">
                       <button
+                        type="button"
                         onClick={() => handleGoTo("contact")}
                         className="w-full text-left px-5 py-3 text-sm font-semibold text-[#C5A059] hover:bg-[rgba(197,160,89,0.1)] transition-colors"
                       >

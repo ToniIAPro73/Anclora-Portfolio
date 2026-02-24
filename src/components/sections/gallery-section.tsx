@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
@@ -9,12 +10,13 @@ import {
 } from "@/components/ui/dialog"
 import { SectionHeading } from "@/components/sections/section-heading"
 import type { Translations } from "@/data/translations"
-import type { GalleryCategory, GalleryImage } from "@/types"
+import type { GalleryCategory, GalleryImage, Language } from "@/types"
 
 type GalleryText = Translations["es"]["gallery"]
 
 type GallerySectionProps = {
   t: GalleryText
+  lang: Language
   galleryCategory: GalleryCategory
   setGalleryCategory: (value: GalleryCategory) => void
   filteredImages: GalleryImage[]
@@ -24,12 +26,43 @@ type GallerySectionProps = {
 
 export function GallerySection({
   t,
+  lang,
   galleryCategory,
   setGalleryCategory,
   filteredImages,
   selectedGalleryImage,
   setSelectedGalleryImage,
 }: GallerySectionProps) {
+  const previousLabel =
+    lang === "es" ? "Imagen anterior de la galería" : "Previous gallery image"
+  const nextLabel =
+    lang === "es" ? "Siguiente imagen de la galería" : "Next gallery image"
+
+  useEffect(() => {
+    if (selectedGalleryImage === null) return
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") {
+        setSelectedGalleryImage(
+          selectedGalleryImage > 0 ? selectedGalleryImage - 1 : filteredImages.length - 1
+        )
+      }
+
+      if (event.key === "ArrowRight") {
+        setSelectedGalleryImage(
+          selectedGalleryImage < filteredImages.length - 1 ? selectedGalleryImage + 1 : 0
+        )
+      }
+
+      if (event.key === "Escape") {
+        setSelectedGalleryImage(null)
+      }
+    }
+
+    window.addEventListener("keydown", onKeyDown)
+    return () => window.removeEventListener("keydown", onKeyDown)
+  }, [filteredImages.length, selectedGalleryImage, setSelectedGalleryImage])
+
   return (
     <>
       <section id="gallery" className="ap-section ap-surface-navy">
@@ -46,6 +79,7 @@ export function GallerySection({
             {(Object.entries(t.categories) as [GalleryCategory, string][]).map(([key, label]) => (
               <button
                 key={key}
+                type="button"
                 onClick={() => setGalleryCategory(key)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   galleryCategory === key
@@ -63,8 +97,9 @@ export function GallerySection({
               {filteredImages.map((image, index) => {
                 const isFeatured = index === 0 || index === 5
                 return (
-                <motion.div
+                <motion.button
                   key={image.src}
+                  type="button"
                   layout
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -76,6 +111,7 @@ export function GallerySection({
                       : "min-h-[200px] sm:min-h-[220px]"
                   }`}
                   onClick={() => setSelectedGalleryImage(index)}
+                  aria-label={image.alt}
                 >
                   <Image
                     src={image.src}
@@ -89,7 +125,7 @@ export function GallerySection({
                       <ExternalLink className="w-5 h-5 text-[#C5A059]" />
                     </div>
                   </div>
-                </motion.div>
+                </motion.button>
                 )
               })}
             </AnimatePresence>
@@ -114,21 +150,25 @@ export function GallerySection({
                 className="w-full max-h-[70vh] object-contain rounded-lg"
               />
               <button
+                type="button"
                 onClick={() =>
                   setSelectedGalleryImage(
                     selectedGalleryImage > 0 ? selectedGalleryImage - 1 : filteredImages.length - 1
                   )
                 }
+                aria-label={previousLabel}
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[rgba(15,23,42,0.8)] flex items-center justify-center text-[#C5A059] hover:bg-[#C5A059] hover:text-[#0F172A] transition-colors"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
               <button
+                type="button"
                 onClick={() =>
                   setSelectedGalleryImage(
                     selectedGalleryImage < filteredImages.length - 1 ? selectedGalleryImage + 1 : 0
                   )
                 }
+                aria-label={nextLabel}
                 className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[rgba(15,23,42,0.8)] flex items-center justify-center text-[#C5A059] hover:bg-[#C5A059] hover:text-[#0F172A] transition-colors"
               >
                 <ChevronRight className="w-6 h-6" />

@@ -1,5 +1,3 @@
-import { Language } from "@/types";
-
 // ============================================
 // TRANSLATIONS
 // ============================================
@@ -233,6 +231,10 @@ export const translations = {
         phonePlaceholder: "+34 XXX XXX XXX",
         budget: "Presupuesto de inversión",
         interest: "Interés principal",
+        requiredHint: "Complete nombre, correo y teléfono para activar el envío.",
+        readinessReady: "Formulario listo para enviar.",
+        readinessPending: "Faltan campos obligatorios o el correo no es válido.",
+        trustNote: "Sin spam. Respuesta en menos de 24h hábiles.",
         interests: {
           investment: "Inversión",
           residence: "Residencia habitual",
@@ -240,6 +242,7 @@ export const translations = {
         },
         message: "Mensaje (opcional)",
         messagePlaceholder: "Cuéntenos sobre sus necesidades...",
+        messageCount: "caracteres",
         submit: "Enviar Consulta",
         submitting: "Enviando...",
         success: "Consulta enviada",
@@ -250,6 +253,8 @@ export const translations = {
     },
     footer: {
       tagline: "Blueprint mediterráneo de referencia.",
+      portfolioDisclaimer:
+        "Proyecto de portfolio con datos, imágenes y métricas de carácter ficticio para demostración técnica y de diseño.",
       address: "Passeig de la Pau, 42",
       city: "Port d'Andratx, Mallorca",
       postcode: "07157",
@@ -491,6 +496,10 @@ export const translations = {
         phonePlaceholder: "+34 XXX XXX XXX",
         budget: "Investment budget",
         interest: "Main interest",
+        requiredHint: "Complete name, email, and phone to enable submission.",
+        readinessReady: "Form is ready to submit.",
+        readinessPending: "Required fields are missing or email is invalid.",
+        trustNote: "No spam. Response within 24 business hours.",
         interests: {
           investment: "Investment",
           residence: "Primary residence",
@@ -498,6 +507,7 @@ export const translations = {
         },
         message: "Message (optional)",
         messagePlaceholder: "Tell us about your needs...",
+        messageCount: "characters",
         submit: "Submit Consultation",
         submitting: "Submitting...",
         success: "Consultation sent",
@@ -508,6 +518,8 @@ export const translations = {
     },
     footer: {
       tagline: "A benchmark Mediterranean blueprint.",
+      portfolioDisclaimer:
+        "Portfolio project with fictional data, imagery, and metrics created for technical and design demonstration purposes.",
       address: "Passeig de la Pau, 42",
       city: "Port d'Andratx, Mallorca",
       postcode: "07157",

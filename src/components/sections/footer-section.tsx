@@ -1,10 +1,14 @@
 import Image from "next/image"
+import Link from "next/link"
 import type { Language } from "@/types"
 import type { Translations } from "@/data/translations"
 
 type FooterText = Translations["es"]["footer"]
 
 export function FooterSection({ t, lang }: { t: FooterText; lang: Language }) {
+  const currentYear = new Date().getFullYear()
+  const rightsText = t.rights.replace(/\b\d{4}\b/, String(currentYear))
+
   return (
     <footer className="bg-[#0F172A] text-[#F8F5F2] py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,6 +22,9 @@ export function FooterSection({ t, lang }: { t: FooterText; lang: Language }) {
               </div>
             </div>
             <p className="text-[#94A3B8] max-w-md">{t.tagline}</p>
+            <p className="mt-3 text-xs leading-relaxed text-[#64748B] max-w-xl">
+              {t.portfolioDisclaimer}
+            </p>
           </div>
 
           <div>
@@ -35,21 +42,21 @@ export function FooterSection({ t, lang }: { t: FooterText; lang: Language }) {
           <div>
             <h4 className="font-semibold mb-4">Legal</h4>
             <div className="space-y-2 text-sm">
-              <a href="/legal" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
+              <Link href="/legal" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
                 {t.legal}
-              </a>
-              <a href="/privacy" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
+              </Link>
+              <Link href="/privacy" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
                 {t.privacy}
-              </a>
-              <a href="/cookies" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
+              </Link>
+              <Link href="/cookies" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
                 {t.cookies}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-[rgba(248,245,242,0.1)] text-center text-sm text-[#64748B]">
-          {t.rights}
+          {rightsText}
         </div>
       </div>
     </footer>

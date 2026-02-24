@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import Image from "next/image"
 import { ArrowRight, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -12,12 +12,14 @@ type HeroSectionProps = {
 }
 
 export function HeroSection({ t, onScrollToSection }: HeroSectionProps) {
+  const reduceMotion = useReducedMotion()
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <motion.div
-        initial={{ filter: "blur(20px)", scale: 1.05 }}
-        animate={{ filter: "blur(0px)", scale: 1 }}
-        transition={{ duration: 2, ease: "easeOut" }}
+        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.02 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: reduceMotion ? 0 : 0.8, ease: "easeOut" }}
         className="absolute inset-0 z-0"
       >
         <Image
@@ -39,9 +41,9 @@ export function HeroSection({ t, onScrollToSection }: HeroSectionProps) {
 
       <div className="relative z-20 max-w-5xl mx-auto px-4 text-center pt-20">
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 2 }}
+          transition={{ duration: reduceMotion ? 0 : 0.5, delay: reduceMotion ? 0 : 0.2 }}
           className="text-5xl sm:text-6xl lg:text-7xl font-serif font-semibold leading-tight tracking-tight text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
         >
           {t.title}
@@ -50,18 +52,18 @@ export function HeroSection({ t, onScrollToSection }: HeroSectionProps) {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.3 }}
+          transition={{ duration: reduceMotion ? 0 : 0.45, delay: reduceMotion ? 0 : 0.35 }}
           className="mt-8 text-lg sm:text-xl text-[rgba(248,245,242,0.9)] max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
         >
           {t.subtitle}
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.6 }}
+          transition={{ duration: reduceMotion ? 0 : 0.4, delay: reduceMotion ? 0 : 0.5 }}
           className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Button
@@ -84,12 +86,13 @@ export function HeroSection({ t, onScrollToSection }: HeroSectionProps) {
       </div>
 
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={reduceMotion ? { opacity: 1 } : { opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 3.2 }}
+        transition={{ delay: reduceMotion ? 0 : 0.8 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
       >
         <button
+          type="button"
           onClick={() => onScrollToSection("investment")}
           aria-label={t.scrollText}
           className="flex flex-col items-center gap-2 text-[rgba(248,245,242,0.7)] hover:text-[#F8F5F2] transition-colors"

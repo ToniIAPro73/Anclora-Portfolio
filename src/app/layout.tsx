@@ -37,9 +37,19 @@ export const metadata: Metadata = {
   keywords: ["luxury real estate", "Mallorca", "Port d'Andratx", "Mediterranean", "investment property", "ultra-luxury"],
   authors: [{ name: "Anclora Private Estates" }],
   creator: "Anclora Group",
+  applicationName: "Anclora Private Estates",
+  category: "Real Estate",
+  robots: {
+    index: true,
+    follow: true,
+  },
   metadataBase: new URL("https://anclora-estates.com"),
   alternates: {
     canonical: "/",
+    languages: {
+      "es-ES": "/",
+      "en-US": "/",
+    },
   },
   icons: {
     icon: "/favicon.ico",
@@ -50,6 +60,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://anclora-estates.com",
     siteName: "Anclora Private Estates",
+    locale: "es_ES",
     images: [
       {
         url: "/images/hero/hero-daylight.jpg",
@@ -95,6 +106,14 @@ export default function RootLayout({
       "Portfolio blueprint project demonstrating premium digital design and engineering for luxury real estate.",
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Anclora Private Estates",
+    url: "https://anclora-estates.com",
+    inLanguage: ["es", "en"],
+  };
+
   return (
     <html lang="es" suppressHydrationWarning>
       <body
@@ -107,6 +126,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
         {children}
         <Toaster />

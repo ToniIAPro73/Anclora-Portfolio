@@ -32,6 +32,10 @@ type ContactText = {
     phonePlaceholder: string
     budget: string
     interest: string
+    requiredHint: string
+    readinessReady: string
+    readinessPending: string
+    trustNote: string
     interests: {
       investment: string
       residence: string
@@ -39,6 +43,7 @@ type ContactText = {
     }
     message: string
     messagePlaceholder: string
+    messageCount: string
     submit: string
     submitting: string
     success: string
@@ -93,6 +98,13 @@ export function ContactSection({
   setIsSuccess,
   handleSubmit,
 }: ContactSectionProps) {
+  const maxMessageLength = 600
+  const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+  const isFormValid =
+    Boolean(formData.name.trim()) &&
+    isEmailValid &&
+    Boolean(formData.phone.trim())
+
   return (
     <section id="contact" className="ap-section ap-surface-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -201,6 +213,7 @@ export function ContactSection({
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder={tContact.form.namePlaceholder}
                       className="mt-2 bg-[#FAF9F6] border-[rgba(15,23,42,0.1)]"
+                      autoComplete="name"
                       required
                     />
                   </div>
@@ -213,6 +226,8 @@ export function ContactSection({
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder={tContact.form.emailPlaceholder}
                       className="mt-2 bg-[#FAF9F6] border-[rgba(15,23,42,0.1)]"
+                      autoComplete="email"
+                      inputMode="email"
                       required
                     />
                   </div>
@@ -227,6 +242,8 @@ export function ContactSection({
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder={tContact.form.phonePlaceholder}
                     className="mt-2 bg-[#FAF9F6] border-[rgba(15,23,42,0.1)]"
+                    autoComplete="tel"
+                    inputMode="tel"
                     required
                   />
                 </div>
@@ -277,12 +294,16 @@ export function ContactSection({
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder={tContact.form.messagePlaceholder}
                     className="mt-2 bg-[#FAF9F6] border-[rgba(15,23,42,0.1)] min-h-[100px]"
+                    maxLength={maxMessageLength}
                   />
+                  <p className="mt-2 text-xs text-[#64748B] text-right">
+                    {formData.message.length}/{maxMessageLength} {tContact.form.messageCount}
+                  </p>
                 </div>
 
                 <Button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !isFormValid}
                   className="w-full bg-[#C5A059] hover:bg-[#A8893D] text-[#0F172A] font-medium py-6"
                 >
                   {isSubmitting ? (
@@ -302,6 +323,11 @@ export function ContactSection({
                   )}
                 </Button>
 
+                <p className="text-xs text-[#64748B] text-center">{tContact.form.requiredHint}</p>
+                <p className="text-xs text-[#64748B] text-center" role="status" aria-live="polite">
+                  {isFormValid ? tContact.form.readinessReady : tContact.form.readinessPending}
+                </p>
+                <p className="text-xs text-[#64748B] text-center">{tContact.form.trustNote}</p>
                 <p className="text-xs text-[#64748B] text-center">{tContact.privacy}</p>
               </form>
             )}

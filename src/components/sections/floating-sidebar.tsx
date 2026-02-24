@@ -1,40 +1,13 @@
-import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { ChevronLeft } from "lucide-react"
+import { useScrollNavigation } from "@/hooks/use-scroll-navigation"
 import type { Language } from "@/types"
 
 export function FloatingSidebar({ lang }: { lang: Language }) {
-  const [scrollPosition, setScrollPosition] = useState<"top" | "middle" | "bottom">("top")
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY
-      const windowHeight = window.innerHeight
-      const docHeight = document.documentElement.scrollHeight
-
-      if (scrollTop < 100) {
-        setScrollPosition("top")
-      } else if (scrollTop + windowHeight >= docHeight - 100) {
-        setScrollPosition("bottom")
-      } else {
-        setScrollPosition("middle")
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const scrollUp = () => {
-    window.scrollBy({ top: -window.innerHeight * 0.8, behavior: "smooth" })
-  }
-
-  const scrollDown = () => {
-    window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" })
-  }
+  const { scrollPosition, scrollUp, scrollDown } = useScrollNavigation()
 
   return (
-    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-6">
+    <div className="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col items-center gap-6">
       <div className="flex flex-col items-center gap-4">
         <span
           className="text-xs font-medium tracking-widest uppercase writing-mode-vertical text-[#64748B] hover:text-[#C5A059] transition-colors cursor-default"
@@ -45,7 +18,9 @@ export function FloatingSidebar({ lang }: { lang: Language }) {
         <div className="w-px h-8 bg-gradient-to-b from-[#C5A059] to-transparent" />
         <div className="flex flex-col gap-3">
           <motion.a
-            href="#"
+            href="https://www.instagram.com/anclora.group/"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Instagram"
             whileHover={{ scale: 1.1, color: "#C5A059" }}
             className="text-[#64748B] hover:text-[#C5A059] transition-colors"
@@ -55,7 +30,9 @@ export function FloatingSidebar({ lang }: { lang: Language }) {
             </svg>
           </motion.a>
           <motion.a
-            href="#"
+            href="https://www.linkedin.com/company/anclora-group/"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="LinkedIn"
             whileHover={{ scale: 1.1, color: "#C5A059" }}
             className="text-[#64748B] hover:text-[#C5A059] transition-colors"
@@ -65,7 +42,9 @@ export function FloatingSidebar({ lang }: { lang: Language }) {
             </svg>
           </motion.a>
           <motion.a
-            href="#"
+            href="https://x.com/ancloragroup"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="X"
             whileHover={{ scale: 1.1, color: "#C5A059" }}
             className="text-[#64748B] hover:text-[#C5A059] transition-colors"
@@ -81,6 +60,7 @@ export function FloatingSidebar({ lang }: { lang: Language }) {
 
       <div className="flex flex-col gap-2">
         <motion.button
+          type="button"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{
             opacity: scrollPosition === "top" ? 0 : 1,
@@ -95,6 +75,7 @@ export function FloatingSidebar({ lang }: { lang: Language }) {
         </motion.button>
 
         <motion.button
+          type="button"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{
             opacity: scrollPosition === "bottom" ? 0 : 1,
