@@ -20,7 +20,7 @@ export function HeroSection({ t, onScrollToSection }: HeroSectionProps) {
           fill
           priority
           sizes="100vw"
-          quality={60}
+          quality={50}
           className="w-full h-full object-cover object-center"
         />
       </div>

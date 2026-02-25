@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
 import Image from "next/image"
 import { ArrowRight, ChevronDown, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -30,18 +29,17 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection }: TopN
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <motion.button
+          <button
             type="button"
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => handleGoTo("hero")}
-            whileHover={{ scale: 1.02 }}
           >
             <Image src="/logo.png" alt="Anclora Private Estates" width={40} height={40} className="w-10 h-10 object-contain" />
             <div>
               <span className="font-serif text-xl font-semibold tracking-tight text-[#F8F5F2]">Anclora</span>
               <span className="font-script text-[#C5A059] text-base ml-1">Private Estates</span>
             </div>
-          </motion.button>
+          </button>
 
           <div className="flex items-center gap-3">
             <div className="hidden xl:flex items-center gap-1 mr-2">
@@ -90,44 +88,35 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection }: TopN
                 <ChevronDown className={`w-4 h-4 transition-transform ${mobileMenuOpen ? "rotate-180" : ""}`} />
               </button>
 
-              <AnimatePresence>
-                {mobileMenuOpen && (
-                  <motion.div
-                    id="main-navigation-menu"
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute right-0 mt-2 w-56 py-2 bg-[#0F172A] rounded-xl shadow-xl border border-[rgba(248,245,242,0.12)] overflow-hidden"
-                  >
-                    {Object.entries(tNav)
-                      .filter(([key]) => key !== "contact")
-                      .map(([key, label], index) => (
-                        <motion.button
-                          key={key}
-                          type="button"
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.05 }}
-                          onClick={() => handleGoTo(key)}
-                          className="w-full text-left px-5 py-3 text-sm font-medium text-[#CBD5E1] hover:text-[#F8F5F2] hover:bg-[rgba(197,160,89,0.14)] transition-colors flex items-center justify-between group"
-                        >
-                          <span>{label}</span>
-                          <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all text-[#C5A059]" />
-                        </motion.button>
-                      ))}
-                    <div className="mt-2 pt-2 border-t border-[rgba(248,245,242,0.12)]">
+              {mobileMenuOpen && (
+                <div
+                  id="main-navigation-menu"
+                  className="absolute right-0 mt-2 w-56 py-2 bg-[#0F172A] rounded-xl shadow-xl border border-[rgba(248,245,242,0.12)] overflow-hidden"
+                >
+                  {Object.entries(tNav)
+                    .filter(([key]) => key !== "contact")
+                    .map(([key, label]) => (
                       <button
+                        key={key}
                         type="button"
-                        onClick={() => handleGoTo("contact")}
-                        className="w-full text-left px-5 py-3 text-sm font-semibold text-[#C5A059] hover:bg-[rgba(197,160,89,0.1)] transition-colors"
+                        onClick={() => handleGoTo(key)}
+                        className="w-full text-left px-5 py-3 text-sm font-medium text-[#CBD5E1] hover:text-[#F8F5F2] hover:bg-[rgba(197,160,89,0.14)] transition-colors flex items-center justify-between group"
                       >
-                        {tNav.contact}
+                        <span>{label}</span>
+                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all text-[#C5A059]" />
                       </button>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    ))}
+                  <div className="mt-2 pt-2 border-t border-[rgba(248,245,242,0.12)]">
+                    <button
+                      type="button"
+                      onClick={() => handleGoTo("contact")}
+                      className="w-full text-left px-5 py-3 text-sm font-semibold text-[#C5A059] hover:bg-[rgba(197,160,89,0.1)] transition-colors"
+                    >
+                      {tNav.contact}
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

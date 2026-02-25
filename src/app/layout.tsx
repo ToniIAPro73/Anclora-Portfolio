@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Montserrat, Allura, Inter } from "next/font/google";
+import { Cormorant_Garamond, Montserrat, Allura } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
 const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "600"],
   display: "swap",
 });
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -21,13 +21,6 @@ const allura = Allura({
   variable: "--font-allura",
   subsets: ["latin"],
   weight: ["400"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -117,7 +110,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
-        className={`${cormorantGaramond.variable} ${montserrat.variable} ${allura.variable} ${inter.variable} antialiased`}
+        className={`${cormorantGaramond.variable} ${montserrat.variable} ${allura.variable} antialiased`}
       >
         <script
           type="application/ld+json"
