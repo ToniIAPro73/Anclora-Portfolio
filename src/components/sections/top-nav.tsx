@@ -37,7 +37,7 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection }: TopN
             <Image src="/logo.png" alt="Anclora Private Estates" width={40} height={40} className="w-9 h-9 sm:w-10 sm:h-10 object-contain" />
             <div className="min-w-0 whitespace-nowrap">
               <span className="font-serif text-base sm:text-xl font-semibold tracking-tight text-[#F8F5F2]">Anclora</span>
-              <span className="hidden md:inline font-script text-[#C5A059] text-base ml-1">Private Estates</span>
+              <span className="inline font-script text-[#C5A059] text-sm sm:text-base ml-1">Private Estates</span>
             </div>
           </button>
 
