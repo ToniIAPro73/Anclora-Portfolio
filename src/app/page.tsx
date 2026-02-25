@@ -12,6 +12,9 @@ const BlueprintSection = dynamic(() =>
 const InvestmentSection = dynamic(() =>
   import('@/components/sections/investment-section').then((mod) => mod.InvestmentSection),
 );
+const StorytellingSection = dynamic(() =>
+  import('@/components/sections/storytelling-section').then((mod) => mod.StorytellingSection),
+);
 const FeaturesSection = dynamic(() =>
   import('@/components/sections/features-section').then((mod) => mod.FeaturesSection),
 );
@@ -116,6 +119,7 @@ export default function AndratxAzureResidences() {
             <FloatingSidebar lang={lang} />
 
             <BlueprintSection t={t.blueprint} />
+            <StorytellingSection t={t.storytelling} />
             <InvestmentSection t={t.investment} lang={lang} />
             <FeaturesSection t={t.features} lang={lang} />
 

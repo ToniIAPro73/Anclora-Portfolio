@@ -48,6 +48,33 @@ export const translations = {
         },
       },
     },
+    storytelling: {
+      badge: "Narrativa de Portfolio",
+      title: "Historia que",
+      titleAccent: "Convierte",
+      subtitle:
+        "Marco editorial para presentar el caso como activo comercial: contexto, método y resultado medible.",
+      pillars: {
+        context: {
+          title: "Contexto",
+          desc: "Qué problema resuelve la propuesta y por qué ese mercado exige una ejecución premium.",
+        },
+        method: {
+          title: "Método",
+          desc: "Cómo se traduce estrategia de marca en UX, arquitectura técnica y decisiones de producto.",
+        },
+        outcome: {
+          title: "Resultado",
+          desc: "Qué indicadores validan la calidad de entrega: Lighthouse, accesibilidad y claridad comercial.",
+        },
+      },
+      channels: {
+        linkedin: "Resumen ejecutivo para LinkedIn (credibilidad + autoridad técnica).",
+        coldEmail: "Mensaje corto para cold email (dolor, propuesta y CTA directo).",
+        social: "Micro-copy para redes (gancho visual + prueba de ejecución).",
+      },
+      note: "Este bloque define la base reusable de contenido para prospección multicanal.",
+    },
     investment: {
       badge: "Inteligencia de Mercado",
       title: "Lectura de",
@@ -312,6 +339,33 @@ export const translations = {
           desc: "Consistent visual tokens across color, typography, and rhythm for a sophisticated digital identity.",
         },
       },
+    },
+    storytelling: {
+      badge: "Portfolio Storytelling",
+      title: "Narrative that",
+      titleAccent: "Converts",
+      subtitle:
+        "Editorial framework to present the case as a commercial asset: context, method, and measurable outcome.",
+      pillars: {
+        context: {
+          title: "Context",
+          desc: "What problem the proposal solves and why this market demands premium execution.",
+        },
+        method: {
+          title: "Method",
+          desc: "How brand strategy is translated into UX, technical architecture, and product decisions.",
+        },
+        outcome: {
+          title: "Outcome",
+          desc: "Which indicators validate delivery quality: Lighthouse, accessibility, and commercial clarity.",
+        },
+      },
+      channels: {
+        linkedin: "Executive summary for LinkedIn (credibility + technical authority).",
+        coldEmail: "Short cold-email message (pain point, proposition, and direct CTA).",
+        social: "Micro-copy for social media (visual hook + execution proof).",
+      },
+      note: "This block defines the reusable content base for multi-channel outreach.",
     },
     investment: {
       badge: "Market Intelligence",
