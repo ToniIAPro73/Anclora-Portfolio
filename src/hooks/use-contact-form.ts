@@ -18,6 +18,9 @@ type UseContactFormOptions = {
   validationDescription?: string
   successToastClassName?: string
   toast?: (payload: ToastPayload) => void
+  onSubmitAttempt?: () => void
+  onSubmitSuccess?: () => void
+  onSubmitError?: () => void
 }
 
 export type ContactFormState = {
@@ -67,6 +70,9 @@ export const useContactForm = (options: UseContactFormOptions = {}) => {
     validationDescription = "",
     successToastClassName = "bg-[#0F172A] text-[#F8F5F2] border-[#C5A059]",
     toast,
+    onSubmitAttempt,
+    onSubmitSuccess,
+    onSubmitError,
   } = options
 
   const [formData, setFormData] = useState<ContactFormState>(() => {
@@ -114,6 +120,7 @@ export const useContactForm = (options: UseContactFormOptions = {}) => {
     }
 
     setIsSubmitting(true)
+    onSubmitAttempt?.()
     const submittedAt = new Date().toISOString()
 
     const leadData: LeadData = {
@@ -158,6 +165,7 @@ export const useContactForm = (options: UseContactFormOptions = {}) => {
         const payload = (await response.json().catch(() => null)) as { error?: string } | null
 
         setIsSubmitting(false)
+        onSubmitError?.()
         toast?.({
           title: validationTitle || fallbackError,
           description: payload?.error || fallbackError,
@@ -168,6 +176,7 @@ export const useContactForm = (options: UseContactFormOptions = {}) => {
 
       setIsSubmitting(false)
       setIsSuccess(true)
+      onSubmitSuccess?.()
 
       toast?.({
         title: successTitle,
@@ -180,6 +189,7 @@ export const useContactForm = (options: UseContactFormOptions = {}) => {
           ? "No hemos podido completar el envío. Revise su conexión y vuelva a intentarlo."
           : "We couldn't complete your request. Please check your connection and try again."
       setIsSubmitting(false)
+      onSubmitError?.()
       toast?.({
         title: validationTitle || networkError,
         description: networkError,

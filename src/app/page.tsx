@@ -64,6 +64,7 @@ export default function AndratxAzureResidences() {
     handleSubmit,
     formatPrice,
     formatArea,
+    trackEvent,
   } = useHomepageController();
 
   useEffect(() => {
@@ -109,10 +110,15 @@ export default function AndratxAzureResidences() {
         tNav={t.nav}
         onToggleLanguage={toggleLanguage}
         onScrollToSection={handleScrollToSection}
+        onTrackContactClick={() => trackEvent("nav_contact_click")}
       />
 
       <main id="main-content">
-        <HeroSection t={t.hero} onScrollToSection={handleScrollToSection} />
+        <HeroSection
+          t={t.hero}
+          onScrollToSection={handleScrollToSection}
+          onTrackEvent={(eventName) => trackEvent(eventName)}
+        />
 
         {showDeferredSections && (
           <>

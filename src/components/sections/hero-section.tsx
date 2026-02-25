@@ -8,9 +8,10 @@ type HeroText = Translations["es"]["hero"]
 type HeroSectionProps = {
   t: HeroText
   onScrollToSection: (id: string) => void
+  onTrackEvent: (eventName: "hero_cta_primary_click" | "hero_cta_secondary_click") => void
 }
 
-export function HeroSection({ t, onScrollToSection }: HeroSectionProps) {
+export function HeroSection({ t, onScrollToSection, onTrackEvent }: HeroSectionProps) {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -46,7 +47,10 @@ export function HeroSection({ t, onScrollToSection }: HeroSectionProps) {
         <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
             size="lg"
-            onClick={() => onScrollToSection("residences")}
+            onClick={() => {
+              onTrackEvent("hero_cta_primary_click")
+              onScrollToSection("residences")
+            }}
             className="bg-[#C5A059] hover:bg-[#D4B77A] text-[#0F172A] px-8 py-6 text-lg font-semibold shadow-[0_4px_30px_rgba(197,160,89,0.4)] transition-all hover:shadow-[0_6px_40px_rgba(197,160,89,0.5)]"
           >
             {t.cta}
@@ -55,7 +59,10 @@ export function HeroSection({ t, onScrollToSection }: HeroSectionProps) {
           <Button
             size="lg"
             variant="outline"
-            onClick={() => onScrollToSection("contact")}
+            onClick={() => {
+              onTrackEvent("hero_cta_secondary_click")
+              onScrollToSection("contact")
+            }}
             className="border-2 border-[rgba(248,245,242,0.6)] text-[#F8F5F2] hover:bg-[rgba(248,245,242,0.1)] hover:border-[#F8F5F2] px-8 py-6 text-lg font-medium backdrop-blur-sm bg-[rgba(15,23,42,0.3)] transition-all"
           >
             {t.ctaSecondary}

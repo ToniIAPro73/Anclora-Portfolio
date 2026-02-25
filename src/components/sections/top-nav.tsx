@@ -12,9 +12,10 @@ type TopNavProps = {
   tNav: NavText
   onToggleLanguage: () => void
   onScrollToSection: (id: string) => void
+  onTrackContactClick: () => void
 }
 
-export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection }: TopNavProps) {
+export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection, onTrackContactClick }: TopNavProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const handleGoTo = (id: string) => {
@@ -69,7 +70,10 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection }: TopN
             </button>
 
             <Button
-              onClick={() => handleGoTo("contact")}
+              onClick={() => {
+                onTrackContactClick()
+                handleGoTo("contact")
+              }}
               className="hidden md:inline-flex bg-[#C5A059] hover:bg-[#A8893D] text-[#0F172A] font-medium"
             >
               {tNav.contact}
@@ -117,7 +121,10 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection }: TopN
                     </button>
                     <button
                       type="button"
-                      onClick={() => handleGoTo("contact")}
+                      onClick={() => {
+                        onTrackContactClick()
+                        handleGoTo("contact")
+                      }}
                       className="w-full text-left px-5 py-3 text-sm font-semibold text-[#C5A059] hover:bg-[rgba(197,160,89,0.1)] transition-colors"
                     >
                       {tNav.contact}

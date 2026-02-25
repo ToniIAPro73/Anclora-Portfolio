@@ -22,3 +22,20 @@
   - Nueva sección de storytelling en landing con narrativa `contexto -> método -> resultado`.
   - Bloques de contenido reusable por canal: LinkedIn, cold email y social.
   - Integración bilingüe (`es`/`en`) en `translations`.
+
+## v1.3
+
+- Se planifican dos nuevas features prioritarias (estado `PLANNED`):
+  - `conversion-analytics-and-attribution-layer`
+  - `crm-handoff-and-lead-intelligence`
+- Se crean artefactos SDD completos (`spec`, `test-plan`, `spec-migration`, `qa-report`, `gate-final`).
+- Se añaden `skills` y `prompts` de orquestación por feature para ejecución end-to-end.
+
+## v1.4
+
+- Feature `conversion-analytics-and-attribution-layer` implementada (GO técnico condicional).
+  - Nuevo endpoint `POST/GET /api/analytics/events` con validación Zod, rate-limit y deduplicación.
+  - Nuevo store persistente `conversion-events.json` para trazabilidad de eventos.
+  - Instrumentación de eventos en Hero CTA, contacto desde navegación y submit del formulario.
+  - Cálculo de agregados básicos en API (`totalsByEvent`, `submitSuccessRate`, `topChannels`).
+  - Tests de API de analytics añadidos y ejecutados en verde.

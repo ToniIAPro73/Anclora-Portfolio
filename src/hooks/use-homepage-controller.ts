@@ -5,6 +5,7 @@ import { useGallery } from "@/hooks/use-gallery"
 import { useResidenceSelection } from "@/hooks/use-residence-selection"
 import { useSectionNavigation } from "@/hooks/use-section-navigation"
 import { useFaqItems } from "@/hooks/use-faq-items"
+import { useConversionTracking } from "@/hooks/use-conversion-tracking"
 import { translations } from "@/data/translations"
 import { formatAreaFromSqm } from "@/lib/formatters"
 
@@ -22,6 +23,7 @@ export const useHomepageController = () => {
   const { toast } = useToast()
   const t = translations[lang]
   const { items: faqItems } = useFaqItems(t.faqs)
+  const { trackEvent } = useConversionTracking(lang)
 
   const {
     formData,
@@ -43,6 +45,9 @@ export const useHomepageController = () => {
       lang === "es"
         ? "Por favor complete todos los campos correctamente."
         : "Please complete all fields correctly.",
+    onSubmitAttempt: () => trackEvent("contact_form_submit_attempt"),
+    onSubmitSuccess: () => trackEvent("contact_form_submit_success"),
+    onSubmitError: () => trackEvent("contact_form_submit_error"),
   })
 
   return {
@@ -69,5 +74,6 @@ export const useHomepageController = () => {
     handleSubmit,
     formatPrice,
     formatArea: (sqm: number) => formatAreaFromSqm(lang, sqm),
+    trackEvent,
   }
 }

@@ -7,3 +7,5 @@ Esta carpeta contiene skills operativas para ejecutar features de forma consiste
 - `spec-driven-feature-delivery/`: flujo SDD end-to-end (spec -> implementación -> QA).
 - `lead-capture-reliability-and-trust/`: robustez de formularios, validación y confianza de conversión.
 - `content-ops-and-portfolio-storytelling/`: narrativa reusable por canal (LinkedIn, cold email, social).
+- `conversion-analytics-and-attribution-layer/`: instrumentación de eventos, UTMs y medición de conversión.
+- `crm-handoff-and-lead-intelligence/`: entrega fiable a CRM y priorización de leads.
