@@ -1,4 +1,3 @@
-import { motion, useReducedMotion } from "framer-motion"
 import Image from "next/image"
 import { ArrowRight, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -12,16 +11,9 @@ type HeroSectionProps = {
 }
 
 export function HeroSection({ t, onScrollToSection }: HeroSectionProps) {
-  const reduceMotion = useReducedMotion()
-
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <motion.div
-        initial={reduceMotion ? { opacity: 1 } : { opacity: 0, scale: 1.02 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: reduceMotion ? 0 : 0.8, ease: "easeOut" }}
-        className="absolute inset-0 z-0"
-      >
+      <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero/hero-daylight.jpg"
           alt="Anclora Private Estates"
@@ -30,7 +22,7 @@ export function HeroSection({ t, onScrollToSection }: HeroSectionProps) {
           sizes="100vw"
           className="w-full h-full object-cover object-center"
         />
-      </motion.div>
+      </div>
 
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-[rgba(15,23,42,0.5)] via-[rgba(15,23,42,0.4)] to-[rgba(15,23,42,0.7)]" />
 
@@ -40,32 +32,17 @@ export function HeroSection({ t, onScrollToSection }: HeroSectionProps) {
       />
 
       <div className="relative z-20 max-w-5xl mx-auto px-4 text-center pt-20">
-        <motion.h1
-          initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reduceMotion ? 0 : 0.5, delay: reduceMotion ? 0 : 0.2 }}
-          className="text-5xl sm:text-6xl lg:text-7xl font-serif font-semibold leading-tight tracking-tight text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
-        >
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif font-semibold leading-tight tracking-tight text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
           {t.title}
           <br />
           <span className="text-[#C5A059] drop-shadow-[0_2px_10px_rgba(197,160,89,0.3)]">{t.titleAccent}</span>
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reduceMotion ? 0 : 0.45, delay: reduceMotion ? 0 : 0.35 }}
-          className="mt-8 text-lg sm:text-xl text-[rgba(248,245,242,0.9)] max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
-        >
+        <p className="mt-8 text-lg sm:text-xl text-[rgba(248,245,242,0.9)] max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
           {t.subtitle}
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reduceMotion ? 0 : 0.4, delay: reduceMotion ? 0 : 0.5 }}
-          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button
             size="lg"
             onClick={() => onScrollToSection("residences")}
@@ -82,15 +59,10 @@ export function HeroSection({ t, onScrollToSection }: HeroSectionProps) {
           >
             {t.ctaSecondary}
           </Button>
-        </motion.div>
+        </div>
       </div>
 
-      <motion.div
-        initial={reduceMotion ? { opacity: 1 } : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: reduceMotion ? 0 : 0.8 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
-      >
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
         <button
           type="button"
           onClick={() => onScrollToSection("investment")}
@@ -100,7 +72,7 @@ export function HeroSection({ t, onScrollToSection }: HeroSectionProps) {
           <span className="text-sm font-medium text-[rgba(248,245,242,0.7)]">{t.scrollText}</span>
           <ChevronDown className="w-5 h-5 animate-bounce text-[#C5A059]" />
         </button>
-      </motion.div>
+      </div>
     </section>
   )
 }

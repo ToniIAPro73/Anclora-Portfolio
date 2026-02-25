@@ -76,24 +76,24 @@ export function ResidencesSection({
                     </h3>
                     <p
                       className={`text-sm ${
-                        selectedUnit.id === unit.id ? "text-[#94A3B8]" : "text-[#64748B]"
+                        selectedUnit.id === unit.id ? "text-[#CBD5E1]" : "text-[#475569]"
                       }`}
                     >
                       {t.units[unit.id]?.desc ?? ""}
                     </p>
                   </div>
-                  <span className="text-xl font-serif font-semibold text-[#C5A059]">
+                  <span className="text-xl font-serif font-semibold text-[#7A5A24]">
                     {formatPrice(unit.price)}
                   </span>
                 </div>
                 <div className="flex flex-wrap gap-4 text-sm">
-                  <span className={selectedUnit.id === unit.id ? "text-[#94A3B8]" : "text-[#64748B]"}>
+                  <span className={selectedUnit.id === unit.id ? "text-[#CBD5E1]" : "text-[#475569]"}>
                     {formatArea(unit.sqm)} {t.sqm}
                   </span>
-                  <span className={selectedUnit.id === unit.id ? "text-[#94A3B8]" : "text-[#64748B]"}>
+                  <span className={selectedUnit.id === unit.id ? "text-[#CBD5E1]" : "text-[#475569]"}>
                     {unit.bedrooms} {t.bedrooms}
                   </span>
-                  <span className={selectedUnit.id === unit.id ? "text-[#94A3B8]" : "text-[#64748B]"}>
+                  <span className={selectedUnit.id === unit.id ? "text-[#CBD5E1]" : "text-[#475569]"}>
                     {unit.bathrooms} {t.bathrooms}
                   </span>
                 </div>
@@ -129,11 +129,11 @@ export function ResidencesSection({
                   <h3 className="font-serif text-2xl font-semibold">
                     {t.units[selectedUnit.id]?.name ?? selectedUnit.id}
                   </h3>
-                  <p className="text-[#64748B] mt-1">{t.units[selectedUnit.id]?.desc ?? ""}</p>
+                  <p className="text-[#475569] mt-1">{t.units[selectedUnit.id]?.desc ?? ""}</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-sm text-[#64748B]">{t.from}</span>
-                  <p className="text-2xl font-serif font-semibold text-[#C5A059]">
+                  <span className="text-sm text-[#475569]">{t.from}</span>
+                  <p className="text-2xl font-serif font-semibold text-[#7A5A24]">
                     {formatPrice(selectedUnit.price)}
                   </p>
                 </div>
@@ -141,19 +141,19 @@ export function ResidencesSection({
 
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="p-4 bg-[#F8F5F2] rounded-lg">
-                  <span className="text-sm text-[#64748B]">{t.sqm}</span>
+                  <span className="text-sm text-[#475569]">{t.sqm}</span>
                   <p className="text-xl font-semibold">{formatArea(selectedUnit.sqm)}</p>
                 </div>
                 <div className="p-4 bg-[#F8F5F2] rounded-lg">
-                  <span className="text-sm text-[#64748B]">{t.terrace}</span>
+                  <span className="text-sm text-[#475569]">{t.terrace}</span>
                   <p className="text-xl font-semibold">{formatArea(selectedUnit.terrace)} {t.sqm}</p>
                 </div>
                 <div className="p-4 bg-[#F8F5F2] rounded-lg">
-                  <span className="text-sm text-[#64748B]">{t.bedrooms}</span>
+                  <span className="text-sm text-[#475569]">{t.bedrooms}</span>
                   <p className="text-xl font-semibold">{selectedUnit.bedrooms}</p>
                 </div>
                 <div className="p-4 bg-[#F8F5F2] rounded-lg">
-                  <span className="text-sm text-[#64748B]">{t.bathrooms}</span>
+                  <span className="text-sm text-[#475569]">{t.bathrooms}</span>
                   <p className="text-xl font-semibold">{selectedUnit.bathrooms}</p>
                 </div>
               </div>
@@ -164,7 +164,7 @@ export function ResidencesSection({
                   return (
                     <span
                       key={feature}
-                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[rgba(197,160,89,0.1)] text-[#C5A059] text-sm"
+                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#7A5A24] text-[#F8F5F2] text-sm"
                     >
                       <CheckCircle2 className="w-3 h-3" />
                       {typeof featureLabel === "string" ? featureLabel : feature}

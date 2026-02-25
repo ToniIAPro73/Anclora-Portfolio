@@ -131,11 +131,11 @@ export function ContactSection({
                   <MapPin className="w-5 h-5 text-[#C5A059]" />
                 </div>
                 <div>
-                  <h4 className="font-semibold">{tFooter.address}</h4>
-                  <p className="text-[#64748B]">
+                  <h3 className="font-semibold">{tFooter.address}</h3>
+                  <p className="text-[#475569]">
                     {tFooter.city}, {tFooter.postcode}
                   </p>
-                  <p className="text-[#64748B]">{tFooter.spain}</p>
+                  <p className="text-[#475569]">{tFooter.spain}</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -143,7 +143,7 @@ export function ContactSection({
                   <Phone className="w-5 h-5 text-[#C5A059]" />
                 </div>
                 <div>
-                  <h4 className="font-semibold">{tFooter.phone}</h4>
+                  <h3 className="font-semibold">{tFooter.phone}</h3>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -151,7 +151,7 @@ export function ContactSection({
                   <Mail className="w-5 h-5 text-[#C5A059]" />
                 </div>
                 <div>
-                  <h4 className="font-semibold">{tFooter.email}</h4>
+                  <h3 className="font-semibold">{tFooter.email}</h3>
                 </div>
               </div>
             </motion.div>
@@ -193,7 +193,7 @@ export function ContactSection({
                   <CheckCircle2 className="w-10 h-10 text-[#C5A059]" />
                 </motion.div>
                 <h3 className="font-serif text-2xl font-semibold mb-2">{tContact.form.success}</h3>
-                <p className="text-[#64748B]">{tContact.form.successMessage}</p>
+                <p className="text-[#475569]">{tContact.form.successMessage}</p>
                 <Button
                   onClick={() => setIsSuccess(false)}
                   variant="outline"
@@ -249,17 +249,19 @@ export function ContactSection({
                 </div>
 
                 <div>
-                  <Label>{tContact.form.budget}</Label>
+                  <Label id="budget-label">{tContact.form.budget}</Label>
                   <div className="mt-4 px-2">
                     <Slider
                       value={budgetValue}
                       onValueChange={setBudgetValue}
+                      aria-label={tContact.form.budget}
+                      aria-labelledby="budget-label"
                       min={2000000}
                       max={15000000}
                       step={500000}
                       className="w-full"
                     />
-                    <div className="flex justify-between mt-2 text-sm text-[#64748B]">
+                    <div className="flex justify-between mt-2 text-sm text-[#475569]">
                       <span>{formatPrice(2000000)}</span>
                       <span className="font-semibold text-[#C5A059]">{formatPrice(budgetValue[0])}</span>
                       <span>{formatPrice(15000000)}</span>
@@ -275,8 +277,12 @@ export function ContactSection({
                       setFormData({ ...formData, interest: value as ContactFormState["interest"] })
                     }
                   >
-                    <SelectTrigger className="mt-2 bg-[#FAF9F6] border-[rgba(15,23,42,0.1)]">
-                      <SelectValue />
+                    <SelectTrigger
+                      id="interest"
+                      aria-label={tContact.form.interest}
+                      className="mt-2 bg-[#FAF9F6] border-[rgba(15,23,42,0.1)]"
+                    >
+                      <SelectValue placeholder={tContact.form.interests.investment} />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="investment">{tContact.form.interests.investment}</SelectItem>
@@ -296,7 +302,7 @@ export function ContactSection({
                     className="mt-2 bg-[#FAF9F6] border-[rgba(15,23,42,0.1)] min-h-[100px]"
                     maxLength={maxMessageLength}
                   />
-                  <p className="mt-2 text-xs text-[#64748B] text-right">
+                  <p className="mt-2 text-xs text-[#475569] text-right">
                     {formData.message.length}/{maxMessageLength} {tContact.form.messageCount}
                   </p>
                 </div>
@@ -323,12 +329,12 @@ export function ContactSection({
                   )}
                 </Button>
 
-                <p className="text-xs text-[#64748B] text-center">{tContact.form.requiredHint}</p>
-                <p className="text-xs text-[#64748B] text-center" role="status" aria-live="polite">
+                <p className="text-xs text-[#475569] text-center">{tContact.form.requiredHint}</p>
+                <p className="text-xs text-[#475569] text-center" role="status" aria-live="polite">
                   {isFormValid ? tContact.form.readinessReady : tContact.form.readinessPending}
                 </p>
-                <p className="text-xs text-[#64748B] text-center">{tContact.form.trustNote}</p>
-                <p className="text-xs text-[#64748B] text-center">{tContact.privacy}</p>
+                <p className="text-xs text-[#475569] text-center">{tContact.form.trustNote}</p>
+                <p className="text-xs text-[#475569] text-center">{tContact.privacy}</p>
               </form>
             )}
           </motion.div>

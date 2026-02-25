@@ -22,13 +22,13 @@ export function FooterSection({ t, lang }: { t: FooterText; lang: Language }) {
               </div>
             </div>
             <p className="text-[#94A3B8] max-w-md">{t.tagline}</p>
-            <p className="mt-3 text-xs leading-relaxed text-[#64748B] max-w-xl">
+            <p className="mt-3 text-xs leading-relaxed text-[#94A3B8] max-w-xl">
               {t.portfolioDisclaimer}
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">{lang === "es" ? "Contacto" : "Contact"}</h4>
+            <h3 className="font-semibold mb-4">{lang === "es" ? "Contacto" : "Contact"}</h3>
             <div className="space-y-2 text-sm text-[#94A3B8]">
               <p>{t.address}</p>
               <p>
@@ -40,7 +40,7 @@ export function FooterSection({ t, lang }: { t: FooterText; lang: Language }) {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Legal</h4>
+            <h3 className="font-semibold mb-4">Legal</h3>
             <div className="space-y-2 text-sm">
               <Link href="/legal" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
                 {t.legal}
@@ -55,7 +55,7 @@ export function FooterSection({ t, lang }: { t: FooterText; lang: Language }) {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-[rgba(248,245,242,0.1)] text-center text-sm text-[#64748B]">
+        <div className="mt-12 pt-8 border-t border-[rgba(248,245,242,0.1)] text-center text-sm text-[#94A3B8]">
           {rightsText}
         </div>
       </div>
