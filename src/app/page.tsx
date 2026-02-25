@@ -33,6 +33,7 @@ const FloatingSidebar = dynamic(
   () => import('@/components/sections/floating-sidebar').then((mod) => mod.FloatingSidebar),
   { ssr: false },
 );
+const Toaster = dynamic(() => import('@/components/ui/toaster').then((mod) => mod.Toaster), { ssr: false });
 
 export default function AndratxAzureResidences() {
   const [showDeferredSections, setShowDeferredSections] = useState(false);
@@ -67,9 +68,6 @@ export default function AndratxAzureResidences() {
   }, [lang]);
 
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout> | undefined;
-    let idleId: number | undefined;
-
     const enableDeferredSections = () => {
       setShowDeferredSections(true);
       window.removeEventListener('scroll', enableDeferredSections);
@@ -81,22 +79,10 @@ export default function AndratxAzureResidences() {
     window.addEventListener('touchstart', enableDeferredSections, { passive: true });
     window.addEventListener('keydown', enableDeferredSections);
 
-    if ('requestIdleCallback' in window) {
-      idleId = window.requestIdleCallback(enableDeferredSections, { timeout: 1200 });
-    } else {
-      timeoutId = setTimeout(enableDeferredSections, 900);
-    }
-
     return () => {
       window.removeEventListener('scroll', enableDeferredSections);
       window.removeEventListener('touchstart', enableDeferredSections);
       window.removeEventListener('keydown', enableDeferredSections);
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-      if (idleId && 'cancelIdleCallback' in window) {
-        window.cancelIdleCallback(idleId);
-      }
     };
   }, []);
 
@@ -182,6 +168,7 @@ export default function AndratxAzureResidences() {
       </main>
 
       {showDeferredSections && <FooterSection t={t.footer} lang={lang} />}
+      {showDeferredSections && <Toaster />}
     </div>
   );
 }
