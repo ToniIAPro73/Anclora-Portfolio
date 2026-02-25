@@ -106,6 +106,8 @@ export default function RootLayout({
     inLanguage: ["es", "en"],
   };
 
+  const structuredData = [organizationSchema, projectSchema, websiteSchema];
+
   return (
     <html lang="es" suppressHydrationWarning>
       <body
@@ -113,15 +115,7 @@ export default function RootLayout({
       >
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         {children}
       </body>
