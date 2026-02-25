@@ -31,17 +31,17 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection }: TopN
         <div className="flex items-center justify-between h-20">
           <button
             type="button"
-            className="flex items-center gap-3 cursor-pointer"
+            className="flex items-center gap-2 sm:gap-3 cursor-pointer min-w-0"
             onClick={() => handleGoTo("hero")}
           >
-            <Image src="/logo.png" alt="Anclora Private Estates" width={40} height={40} className="w-10 h-10 object-contain" />
-            <div>
-              <span className="font-serif text-xl font-semibold tracking-tight text-[#F8F5F2]">Anclora</span>
-              <span className="font-script text-[#C5A059] text-base ml-1">Private Estates</span>
+            <Image src="/logo.png" alt="Anclora Private Estates" width={40} height={40} className="w-9 h-9 sm:w-10 sm:h-10 object-contain" />
+            <div className="min-w-0 whitespace-nowrap">
+              <span className="font-serif text-base sm:text-xl font-semibold tracking-tight text-[#F8F5F2]">Anclora</span>
+              <span className="hidden md:inline font-script text-[#C5A059] text-base ml-1">Private Estates</span>
             </div>
           </button>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <div className="hidden xl:flex items-center gap-1 mr-2">
               {Object.entries(tNav)
                 .filter(([key]) => key !== "contact")
@@ -62,7 +62,7 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection }: TopN
               type="button"
               onClick={onToggleLanguage}
               aria-label={lang === "es" ? "Cambiar idioma (ES)" : "Change language (EN)"}
-              className="flex items-center gap-1.5 text-sm font-medium text-[#CBD5E1] hover:text-[#F8F5F2] transition-colors"
+              className="hidden md:flex items-center gap-1.5 text-sm font-medium text-[#CBD5E1] hover:text-[#F8F5F2] transition-colors"
             >
               <Globe className="w-4 h-4" />
               <span className="hidden sm:inline">{lang.toUpperCase()}</span>
@@ -70,7 +70,7 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection }: TopN
 
             <Button
               onClick={() => handleGoTo("contact")}
-              className="bg-[#C5A059] hover:bg-[#A8893D] text-[#0F172A] font-medium"
+              className="hidden md:inline-flex bg-[#C5A059] hover:bg-[#A8893D] text-[#0F172A] font-medium"
             >
               {tNav.contact}
             </Button>
@@ -107,6 +107,14 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection }: TopN
                       </button>
                     ))}
                   <div className="mt-2 pt-2 border-t border-[rgba(248,245,242,0.12)]">
+                    <button
+                      type="button"
+                      onClick={onToggleLanguage}
+                      className="w-full text-left px-5 py-3 text-sm font-medium text-[#CBD5E1] hover:text-[#F8F5F2] hover:bg-[rgba(197,160,89,0.14)] transition-colors flex items-center gap-2"
+                    >
+                      <Globe className="w-4 h-4" />
+                      <span>{lang === "es" ? "Idioma" : "Language"}: {lang.toUpperCase()}</span>
+                    </button>
                     <button
                       type="button"
                       onClick={() => handleGoTo("contact")}
