@@ -15,4 +15,10 @@ export const contactSchema = z.object({
   message: z.string().max(3000).transform(sanitizeText).optional().or(z.literal("")),
 })
 
+export const contactSubmissionSchema = contactSchema.extend({
+  website: z.string().max(200).transform(sanitizeText).optional().default(""),
+  submittedAt: z.string().max(64).transform(sanitizeText).optional().default(""),
+})
+
 export type ContactInput = z.infer<typeof contactSchema>
+export type ContactSubmissionInput = z.infer<typeof contactSubmissionSchema>

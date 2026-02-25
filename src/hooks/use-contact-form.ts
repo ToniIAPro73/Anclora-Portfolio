@@ -26,9 +26,11 @@ export type ContactFormState = {
   phone: string
   interest: "investment" | "residence" | "vacation"
   message: string
+  website: string
 }
 
 const DEFAULT_BUDGET = 5000000
+const SUBMIT_TIMEOUT_MS = 10_000
 
 const defaultFormData: ContactFormState = {
   name: "",
@@ -36,6 +38,7 @@ const defaultFormData: ContactFormState = {
   phone: "",
   interest: "investment",
   message: "",
+  website: "",
 }
 
 type SavedLead = Partial<LeadData>
@@ -77,6 +80,7 @@ export const useContactForm = (options: UseContactFormOptions = {}) => {
           ? saved.interest
           : defaultFormData.interest,
       message: typeof saved.message === "string" ? saved.message : defaultFormData.message,
+      website: defaultFormData.website,
     }
   })
 
@@ -98,6 +102,7 @@ export const useContactForm = (options: UseContactFormOptions = {}) => {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
+    if (isSubmitting) return
 
     if (!validateForm()) {
       toast?.({
@@ -109,53 +114,78 @@ export const useContactForm = (options: UseContactFormOptions = {}) => {
     }
 
     setIsSubmitting(true)
+    const submittedAt = new Date().toISOString()
 
     const leadData: LeadData = {
-      ...formData,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      interest: formData.interest,
+      message: formData.message,
       budget: budgetValue[0],
       timestamp: new Date().toISOString(),
     }
     localStorage.setItem("anclora_lead_data", JSON.stringify(leadData))
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        budget: budgetValue[0],
-        interest: formData.interest,
-        message: formData.message,
-      }),
-    })
+    try {
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), SUBMIT_TIMEOUT_MS)
 
-    if (!response.ok) {
-      const fallbackError =
-        lang === "es"
-          ? "No se pudo enviar la solicitud. Inténtelo de nuevo."
-          : "Unable to submit request. Please try again."
-      const payload = (await response.json().catch(() => null)) as { error?: string } | null
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        signal: controller.signal,
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          budget: budgetValue[0],
+          interest: formData.interest,
+          message: formData.message,
+          website: formData.website,
+          submittedAt,
+        }),
+      })
+      clearTimeout(timeout)
+
+      if (!response.ok) {
+        const fallbackError =
+          lang === "es"
+            ? "No se pudo enviar la solicitud. Inténtelo de nuevo."
+            : "Unable to submit request. Please try again."
+        const payload = (await response.json().catch(() => null)) as { error?: string } | null
+
+        setIsSubmitting(false)
+        toast?.({
+          title: validationTitle || fallbackError,
+          description: payload?.error || fallbackError,
+          variant: "destructive",
+        })
+        return
+      }
 
       setIsSubmitting(false)
+      setIsSuccess(true)
+
       toast?.({
-        title: validationTitle || fallbackError,
-        description: payload?.error || fallbackError,
+        title: successTitle,
+        description: successDescription,
+        className: successToastClassName,
+      })
+    } catch {
+      const networkError =
+        lang === "es"
+          ? "No hemos podido completar el envío. Revise su conexión y vuelva a intentarlo."
+          : "We couldn't complete your request. Please check your connection and try again."
+      setIsSubmitting(false)
+      toast?.({
+        title: validationTitle || networkError,
+        description: networkError,
         variant: "destructive",
       })
-      return
     }
-
-    setIsSubmitting(false)
-    setIsSuccess(true)
-
-    toast?.({
-      title: successTitle,
-      description: successDescription,
-      className: successToastClassName,
-    })
   }
 
   const formatPrice = useCallback(

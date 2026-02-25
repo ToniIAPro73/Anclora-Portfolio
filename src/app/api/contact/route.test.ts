@@ -64,11 +64,27 @@ describe("api/contact route", () => {
 
   it("returns 429 after rate limit is exceeded", async () => {
     for (let index = 0; index < 8; index += 1) {
-      const response = await POST(createRequest(validPayload, "20.0.0.1"))
+      const response = await POST(
+        createRequest(
+          {
+            ...validPayload,
+            email: `ratelimit-${index}@example.com`,
+          },
+          "20.0.0.1"
+        )
+      )
       expect(response.status).toBe(201)
     }
 
-    const blockedResponse = await POST(createRequest(validPayload, "20.0.0.1"))
+    const blockedResponse = await POST(
+      createRequest(
+        {
+          ...validPayload,
+          email: "ratelimit-final@example.com",
+        },
+        "20.0.0.1"
+      )
+    )
     const body = (await blockedResponse.json()) as { ok: boolean; error: string }
 
     expect(blockedResponse.status).toBe(429)
@@ -94,5 +110,33 @@ describe("api/contact route", () => {
     expect(response.status).toBe(200)
     expect(body.ok).toBe(true)
     expect(body.total).toBe(2)
+  })
+
+  it("returns 202 and skips persistence when honeypot is filled", async () => {
+    const response = await POST(
+      createRequest({
+        ...validPayload,
+        website: "https://bot.example",
+      })
+    )
+    const body = (await response.json()) as { ok: boolean; accepted: boolean }
+    const listResponse = await GET()
+    const listBody = (await listResponse.json()) as { total: number }
+
+    expect(response.status).toBe(202)
+    expect(body.ok).toBe(true)
+    expect(body.accepted).toBe(false)
+    expect(listBody.total).toBe(0)
+  })
+
+  it("returns 202 for duplicate submission window", async () => {
+    const first = await POST(createRequest(validPayload, "40.0.0.1"))
+    const duplicate = await POST(createRequest(validPayload, "40.0.0.1"))
+    const duplicateBody = (await duplicate.json()) as { ok: boolean; deduped: boolean }
+
+    expect(first.status).toBe(201)
+    expect(duplicate.status).toBe(202)
+    expect(duplicateBody.ok).toBe(true)
+    expect(duplicateBody.deduped).toBe(true)
   })
 })

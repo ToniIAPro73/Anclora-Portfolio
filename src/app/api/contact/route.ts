@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server"
 import { consumeRateLimit } from "@/lib/rate-limit"
-import { contactSchema } from "@/lib/schemas/contact"
+import { contactSubmissionSchema } from "@/lib/schemas/contact"
 import { listInquiries, saveInquiry } from "@/lib/inquiry-store"
 
 const RATE_LIMIT_WINDOW_MS = 60_000
 const RATE_LIMIT_MAX_REQUESTS = 8
+const DEDUPE_WINDOW_MS = 15_000
 
 const resolveClientIp = (request: Request) => {
   const forwardedFor = request.headers.get("x-forwarded-for")
@@ -41,7 +42,7 @@ export async function POST(request: Request) {
 
   try {
     const payload = await request.json()
-    const parsed = contactSchema.safeParse(payload)
+    const parsed = contactSubmissionSchema.safeParse(payload)
 
     if (!parsed.success) {
       return NextResponse.json(
@@ -54,7 +55,44 @@ export async function POST(request: Request) {
       )
     }
 
-    const inquiry = await saveInquiry(parsed.data, ipAddress)
+    if (parsed.data.website.length > 0) {
+      // Honeypot filled by bots: acknowledge without persisting.
+      return NextResponse.json(
+        {
+          ok: true,
+          accepted: false,
+        },
+        { status: 202 }
+      )
+    }
+
+    const dedupe = consumeRateLimit({
+      key: `contact:dedupe:${parsed.data.email}:${parsed.data.phone}:${parsed.data.interest}`,
+      limit: 1,
+      windowMs: DEDUPE_WINDOW_MS,
+    })
+
+    if (!dedupe.allowed) {
+      return NextResponse.json(
+        {
+          ok: true,
+          deduped: true,
+        },
+        { status: 202 }
+      )
+    }
+
+    const inquiry = await saveInquiry(
+      {
+        name: parsed.data.name,
+        email: parsed.data.email,
+        phone: parsed.data.phone,
+        budget: parsed.data.budget,
+        interest: parsed.data.interest,
+        message: parsed.data.message,
+      },
+      ipAddress
+    )
 
     return NextResponse.json(
       {

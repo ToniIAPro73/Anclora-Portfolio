@@ -67,6 +67,7 @@ type ContactFormState = {
   phone: string
   interest: "investment" | "residence" | "vacation"
   message: string
+  website: string
 }
 
 type ContactSectionProps = {
@@ -231,6 +232,18 @@ export function ContactSection({
                       required
                     />
                   </div>
+                </div>
+
+                <div className="sr-only" aria-hidden="true">
+                  <Label htmlFor="website">Website</Label>
+                  <Input
+                    id="website"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.website}
+                    onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                  />
                 </div>
 
                 <div>
