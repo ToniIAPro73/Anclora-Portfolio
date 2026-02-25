@@ -64,7 +64,7 @@ export function LocationSection({ t }: { t: LocationText }) {
                 className="p-6 bg-[#1E293B] rounded-xl border border-[rgba(197,160,89,0.1)]"
               >
                 <highlight.icon className="w-8 h-8 text-[#C5A059] mb-4" />
-                <h4 className="font-semibold mb-2">{highlight.title}</h4>
+                <h3 className="font-semibold mb-2">{highlight.title}</h3>
                 <p className="text-sm text-[#94A3B8]">{highlight.desc}</p>
               </motion.div>
             ))}
