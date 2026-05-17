@@ -7,7 +7,7 @@ export default function TermsPage() {
           Este sitio es un blueprint de portfolio operado por Anclora Group. El contenido, imágenes, métricas y datos son demostrativos y no constituyen una oferta inmobiliaria vinculante.
         </p>
         <p className="mt-4 text-[#334155] leading-relaxed">
-          Contacto: hola@anclora.com. Anclora Private Estates es una marca comercial operada bajo licencia exclusiva por Anclora Group.
+          Contacto: hola@anclora.com. Anclora Portfolio forma parte del ecosistema Anclora Group.
         </p>
       </div>
     </main>
