@@ -5,7 +5,8 @@ export default function LegalPage() {
         <h1 className="text-4xl font-serif font-semibold">Aviso Legal</h1>
         <p className="mt-6 text-[#334155] leading-relaxed">
           Este espacio forma parte de un blueprint project de portfolio para Anclora Private Estates. El contenido se
-          muestra con fines demostrativos de marca, diseño y ejecución tecnológica.
+          muestra con fines demostrativos de marca, diseño y ejecución tecnológica. Titular y operador: Anclora Group.
+          No se afirma registro concedido de marca. Contacto: hola@anclora.com.
         </p>
       </div>
     </main>

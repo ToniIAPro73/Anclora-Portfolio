@@ -5,7 +5,8 @@ export default function PrivacyPage() {
         <h1 className="text-4xl font-serif font-semibold">Privacidad</h1>
         <p className="mt-6 text-[#334155] leading-relaxed">
           Los datos enviados mediante el formulario se usan exclusivamente para responder consultas del proyecto
-          blueprint y se tratan con criterios de confidencialidad y minimización.
+          blueprint y se tratan con criterios de confidencialidad y minimización por Anclora Group. Contacto:
+          hola@anclora.com.
         </p>
       </div>
     </main>

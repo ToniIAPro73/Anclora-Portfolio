@@ -4,7 +4,8 @@ export default function CookiesPage() {
       <div className="max-w-4xl mx-auto px-6 py-24">
         <h1 className="text-4xl font-serif font-semibold">Cookies</h1>
         <p className="mt-6 text-[#334155] leading-relaxed">
-          Este sitio utiliza cookies técnicas necesarias para operación básica y medición funcional del blueprint.
+          Este sitio utiliza cookies técnicas necesarias para operación básica y puede guardar preferencias opcionales
+          de análisis o marketing si las autorizas desde el botón flotante.
         </p>
       </div>
     </main>

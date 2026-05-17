@@ -35,13 +35,16 @@ export function FooterSection({ t, lang }: { t: FooterText; lang: Language }) {
                 {t.city}, {t.postcode}
               </p>
               <p>{t.phone}</p>
-              <p>{t.email}</p>
+              <p>hola@anclora.com</p>
             </div>
           </div>
 
           <div>
             <h3 className="font-semibold mb-4">Legal</h3>
             <div className="space-y-2 text-sm">
+              <Link href="/terms" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
+                {t.terms}
+              </Link>
               <Link href="/legal" className="block text-[#94A3B8] hover:text-[#C5A059] transition-colors">
                 {t.legal}
               </Link>
@@ -56,7 +59,8 @@ export function FooterSection({ t, lang }: { t: FooterText; lang: Language }) {
         </div>
 
         <div className="mt-12 pt-8 border-t border-[rgba(248,245,242,0.1)] text-center text-sm text-[#94A3B8]">
-          {rightsText}
+          <p>{rightsText}</p>
+          <p className="mt-2 text-xs">{t.brandStatement}</p>
         </div>
       </div>
     </footer>
