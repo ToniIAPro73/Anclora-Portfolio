@@ -1,3 +1,5 @@
+> ⚠️ Repositorio archivado. Versión vigente: anclora-portfolio-legacy.
+
 # Anclora Portfolio
 
 Portfolio tecnico para el sector inmobiliario premium.
