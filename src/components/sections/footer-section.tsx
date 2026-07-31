@@ -16,10 +16,10 @@ export function FooterSection({ t, lang }: { t: FooterText; lang: Language }) {
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <Image
-                src="/logo-anclora-private-estates-header.png"
+                src="/logo-anclora-private-estates-exp.png"
                 alt="Anclora Private Estates"
-                width={1320}
-                height={377}
+                width={2048}
+                height={483}
                 className="h-10 w-auto object-contain"
               />
             </div>
