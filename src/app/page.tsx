@@ -133,7 +133,7 @@ export default function AndratxAzureResidences() {
         onTrackContactClick={() => trackEvent("nav_contact_click")}
       />
 
-      <FloatingSidebar lang={lang} />
+      <FloatingSidebar lang={lang} onScrollToSection={handleScrollToSection} />
 
       <main id="main-content">
         <HeroSection

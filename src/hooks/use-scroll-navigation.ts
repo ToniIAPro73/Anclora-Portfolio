@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { SECTION_ORDER } from "@/lib/sections";
 
 export const useScrollNavigation = () => {
   const [scrollPosition, setScrollPosition] = useState<
@@ -24,25 +25,24 @@ export const useScrollNavigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  // Current section = last section whose top sits above the probe line
+  // (scroll position plus a header-sized bias).
+  const getAdjacentSectionId = (direction: "up" | "down"): string | null => {
+    const probe = window.scrollY + 160;
+    let currentIndex = 0;
+    SECTION_ORDER.forEach((id, index) => {
+      const element = document.getElementById(id);
+      if (element && element.offsetTop <= probe) {
+        currentIndex = index;
+      }
+    });
 
-  const scrollUp = () => {
-    window.scrollBy({ top: -window.innerHeight * 0.8, behavior: "smooth" });
-  };
-
-  const scrollDown = () => {
-    window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
+    const nextIndex = direction === "down" ? currentIndex + 1 : currentIndex - 1;
+    return SECTION_ORDER[nextIndex] ?? null;
   };
 
   return {
     scrollPosition,
-    scrollToSection,
-    scrollUp,
-    scrollDown,
+    getAdjacentSectionId,
   };
 };
