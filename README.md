@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="./public/logo-anclora-private-estates-exp.png" alt="Anclora Private Estates logo" width="420" />
+<img src="./public/logo-anclora-private-estates-exp.png" alt="Logotipo de Anclora Private Estates" width="420" />
 
 # Anclora Real Estate Portfolio
 
-### Premium digital experience for luxury real estate
+### Experiencia digital premium para el sector inmobiliario de lujo
 
-A bilingual portfolio project combining high-end visual design, modular frontend architecture, lead capture, conversion tracking and production-oriented quality controls.
+Proyecto de portfolio bilingüe que combina diseño visual de alta gama, arquitectura frontend modular, captura de leads, seguimiento de conversiones y controles de calidad orientados a producción.
 
 <br />
 
@@ -17,93 +17,97 @@ A bilingual portfolio project combining high-end visual design, modular frontend
 [![Bun](https://img.shields.io/badge/Bun-runtime-FBF0DF?logo=bun&logoColor=000000)](https://bun.sh/)
 [![CI](https://github.com/ToniIAPro73/anclora-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/ToniIAPro73/anclora-portfolio/actions/workflows/ci.yml)
 
+<br />
+
+**Español** | [English](./README.en.md)
+
 </div>
 
-> ⚠️ **Note:** this repository was previously marked as archived in favour of `anclora-portfolio-legacy`. It is again the active version of the project.
+> ⚠️ **Nota:** este repositorio estuvo marcado como archivado en favor de `anclora-portfolio-legacy`. Vuelve a ser la versión activa del proyecto.
 
 ---
 
 <img
   src="./public/images/hero/hero-daylight.jpg"
-  alt="Luxury real-estate portfolio interface"
+  alt="Interfaz del portfolio inmobiliario de lujo"
   width="100%"
 />
 
-> **Portfolio disclosure**
+> **Aviso de portfolio**
 >
-> All properties, prices, investment figures and commercial content shown in this project are fictional and are used exclusively to demonstrate product design and software engineering capabilities.
+> Todas las propiedades, precios, cifras de inversión y contenidos comerciales mostrados en este proyecto son ficticios y se utilizan exclusivamente para demostrar capacidades de diseño de producto e ingeniería de software.
 
-## Project overview
+## Descripción del proyecto
 
-Anclora Real Estate Portfolio is a complete digital showcase for a fictional luxury residential development in Mallorca.
+Anclora Real Estate Portfolio es un escaparate digital completo para una promoción residencial de lujo ficticia en Mallorca.
 
-The project goes beyond visual presentation. It demonstrates how a premium real-estate experience can combine brand positioning, responsive design, bilingual content, lead generation, server-side validation and measurable conversion events.
+El proyecto va más allá de la presentación visual. Demuestra cómo una experiencia inmobiliaria premium puede combinar posicionamiento de marca, diseño responsive, contenido bilingüe, generación de leads, validación en servidor y eventos de conversión medibles.
 
-| Area                 | What the project demonstrates                                              |
-| -------------------- | -------------------------------------------------------------------------- |
-| Product design       | Premium positioning, visual hierarchy and conversion-oriented storytelling |
-| Frontend             | Responsive sections, reusable components and deferred loading              |
-| Internationalisation | Complete Spanish and English user experience                               |
-| Lead capture         | Validated contact flow with honeypot and duplicate prevention              |
-| Backend              | API routes, rate limiting and local persistence abstractions               |
-| Analytics            | Validated conversion-event tracking and channel attribution                |
-| Quality              | Automated lint, type-check, tests and production build                     |
+| Área                 | Qué demuestra el proyecto                                                       |
+| -------------------- | ------------------------------------------------------------------------------- |
+| Diseño de producto   | Posicionamiento premium, jerarquía visual y storytelling orientado a conversión |
+| Frontend             | Secciones responsive, componentes reutilizables y carga diferida                |
+| Internacionalización | Experiencia de usuario completa en español e inglés                             |
+| Captura de leads     | Flujo de contacto validado con honeypot y prevención de duplicados              |
+| Backend              | Rutas API, rate limiting y abstracciones de persistencia local                  |
+| Analítica            | Seguimiento de eventos de conversión validados y atribución de canales          |
+| Calidad              | Lint, type-check, tests y build de producción automatizados                     |
 
-## Key features
+## Funcionalidades clave
 
-### Premium real-estate experience
+### Experiencia inmobiliaria premium
 
-- Editorial design adapted to luxury residential property.
-- Immersive hero, gallery, residences, investment and location sections.
-- Responsive behaviour across desktop, tablet and mobile.
-- Carefully structured typography, spacing and visual rhythm.
-- Spanish and English content controlled from a unified translation layer.
+- Diseño editorial adaptado a propiedades residenciales de lujo.
+- Secciones inmersivas de hero, galería, residencias, inversión y ubicación.
+- Comportamiento responsive en escritorio, tablet y móvil.
+- Tipografía, espaciado y ritmo visual cuidadosamente estructurados.
+- Contenido en español e inglés controlado desde una capa de traducción unificada.
 
-### Lead-capture reliability
+### Fiabilidad en la captura de leads
 
-- Zod schema validation.
-- Honeypot anti-bot field.
-- IP-based request throttling.
-- Duplicate-submission protection.
-- Controlled API responses.
-- Automated tests for success and error scenarios.
+- Validación de esquemas con Zod.
+- Campo honeypot anti-bots.
+- Limitación de peticiones por IP.
+- Protección contra envíos duplicados.
+- Respuestas API controladas.
+- Tests automatizados para escenarios de éxito y de error.
 
-### Conversion intelligence
+### Inteligencia de conversión
 
-- Client-side conversion event capture.
-- Server-side event validation.
-- UTM source attribution.
-- Device classification.
-- Submission success-rate calculation.
-- Top acquisition-channel summaries.
+- Captura de eventos de conversión en cliente.
+- Validación de eventos en servidor.
+- Atribución de fuentes UTM.
+- Clasificación de dispositivos.
+- Cálculo de la tasa de éxito de envíos.
+- Resúmenes de los principales canales de adquisición.
 
-### Engineering quality
+### Calidad de ingeniería
 
-- Strict TypeScript configuration.
-- ESLint and Prettier.
-- Vitest and Testing Library.
-- GitHub Actions continuous integration.
-- Standalone Next.js production build.
-- Modular hooks, data, schemas and UI components.
+- Configuración estricta de TypeScript.
+- ESLint y Prettier.
+- Vitest y Testing Library.
+- Integración continua con GitHub Actions.
+- Build de producción standalone de Next.js.
+- Hooks, datos, esquemas y componentes UI modulares.
 
-## Technology stack
+## Stack tecnológico
 
 <div align="center">
 
-| Frontend       | Backend and data       | Quality and tooling |
-| -------------- | ---------------------- | ------------------- |
-| Next.js 16     | Next.js Route Handlers | TypeScript          |
-| React 19       | Zod                    | Vitest              |
-| Tailwind CSS 4 | File-based demo stores | Testing Library     |
-| Radix UI       | Rate limiting          | ESLint              |
-| Framer Motion  | Conversion tracking    | Prettier            |
-| Lucide React   | Prisma-ready structure | GitHub Actions      |
+| Frontend       | Backend y datos                  | Calidad y tooling |
+| -------------- | -------------------------------- | ----------------- |
+| Next.js 16     | Route Handlers de Next.js        | TypeScript        |
+| React 19       | Zod                              | Vitest            |
+| Tailwind CSS 4 | Stores demo en archivos          | Testing Library   |
+| Radix UI       | Rate limiting                    | ESLint            |
+| Framer Motion  | Seguimiento de conversiones      | Prettier          |
+| Lucide React   | Estructura preparada para Prisma | GitHub Actions    |
 
 </div>
 
-Infrastructure dependencies available for more complex projects: **Prisma**, **NextAuth**, **TanStack Query** and **Zustand**.
+Dependencias de infraestructura disponibles para proyectos más complejos: **Prisma**, **NextAuth**, **TanStack Query** y **Zustand**.
 
-## Architecture
+## Arquitectura
 
 ```text
 src/
@@ -124,67 +128,67 @@ src/
 │   └── schemas/
 └── types/
 
-prisma/        # database schema and dev database
-scripts/       # build, lint and quality-gate scripts
-docs/          # technical documentation
-├── standards/ # canonical UX/UI contracts
-└── analysis/  # feature and portfolio analyses
-archive/       # historical material and scaffolding leftovers
+prisma/        # esquema y base de datos de desarrollo
+scripts/       # scripts de build, lint y quality gates
+docs/          # documentación técnica
+├── standards/ # contratos UX/UI canónicos
+└── analysis/  # análisis de features y portfolios
+archive/       # material histórico y residuos de scaffolding
 ```
 
-The project separates page composition, business logic, validation, reusable presentation components and persistence concerns.
+El proyecto separa la composición de páginas, la lógica de negocio, la validación, los componentes de presentación reutilizables y la persistencia.
 
-Historical material and scaffolding leftovers are preserved in `archive/` (see [`archive/README.md`](./archive/README.md)). Nothing in `archive/` participates in the build or the application.
+El material histórico y los residuos de scaffolding se conservan en `archive/` (ver [`archive/README.md`](./archive/README.md)). Nada de lo contenido en `archive/` participa en el build ni en la aplicación.
 
-## API endpoints
+## Endpoints de la API
 
-### Contact requests
+### Solicitudes de contacto
 
 ```http
 POST /api/contact
 GET  /api/contact
 ```
 
-Responsibilities:
+Responsabilidades:
 
-- validate the submitted payload;
-- reject malformed requests;
-- detect honeypot submissions;
-- enforce IP-based rate limits;
-- prevent immediate duplicates;
-- store accepted inquiries;
-- return a restricted response payload.
+- validar el payload enviado;
+- rechazar peticiones malformadas;
+- detectar envíos de bots (honeypot);
+- aplicar límites de peticiones por IP;
+- prevenir duplicados inmediatos;
+- persistir las solicitudes aceptadas;
+- devolver una respuesta restringida.
 
-### Conversion events
+### Eventos de conversión
 
 ```http
 POST /api/analytics/events
 GET  /api/analytics/events
 ```
 
-Responsibilities:
+Responsabilidades:
 
-- validate conversion events;
-- classify device type;
-- preserve campaign attribution;
-- calculate submission success rates;
-- aggregate acquisition channels.
+- validar los eventos de conversión;
+- clasificar el tipo de dispositivo;
+- preservar la atribución de campaña;
+- calcular tasas de éxito de envíos;
+- agregar los canales de adquisición.
 
-### API metadata
+### Metadatos de la API
 
 ```http
 GET /api
 ```
 
-Returns the available public API routes.
+Devuelve las rutas públicas disponibles de la API.
 
-## Local development
+## Desarrollo local
 
-### Requirements
+### Requisitos
 
-- [Bun](https://bun.sh/) (the project is managed with Bun and `bun.lock`)
+- [Bun](https://bun.sh/) (el proyecto se gestiona con Bun y `bun.lock`)
 
-### Installation
+### Instalación
 
 ```bash
 git clone git@github.com:ToniIAPro73/anclora-portfolio.git
@@ -195,15 +199,15 @@ cp .env.example .env.local
 bun dev
 ```
 
-Open:
+Abrir:
 
 ```text
 http://localhost:3000
 ```
 
-## Environment configuration
+## Configuración de entorno
 
-The repository includes development placeholders only:
+El repositorio incluye únicamente valores de desarrollo de ejemplo:
 
 ```dotenv
 DATABASE_URL="file:./dev.db"
@@ -212,11 +216,11 @@ NEXTAUTH_SECRET="replace-with-a-secure-random-secret"
 NEXT_PUBLIC_EUR_TO_GBP="0.86"
 ```
 
-Real credentials, personal information and production secrets must never be committed.
+Nunca deben commitearse credenciales reales, información personal ni secretos de producción.
 
 ## Quality gates
 
-Run the complete local validation suite:
+Ejecuta la suite completa de validación local:
 
 ```bash
 bun run lint
@@ -225,29 +229,29 @@ bun run test
 bun run build
 ```
 
-Current baseline:
+Estado actual:
 
-| Check                    |     Status |
-| ------------------------ | ---------: |
-| Prisma client generation |    Passing |
-| ESLint                   |    Passing |
-| TypeScript               |    Passing |
-| Automated tests          | 16 passing |
-| Production build         |    Passing |
+| Check                        |      Estado |
+| ---------------------------- | ----------: |
+| Generación de cliente Prisma |    Correcta |
+| ESLint                       |    Correcto |
+| TypeScript                   |    Correcto |
+| Tests automatizados          | 16 en verde |
+| Build de producción          |    Correcto |
 
-The same core checks run automatically through GitHub Actions.
+Las mismas comprobaciones se ejecutan automáticamente en GitHub Actions.
 
-## Technical documentation
+## Documentación técnica
 
-- [Architecture](./docs/ARCHITECTURE.md)
-- [API documentation](./docs/API.md)
-- [Technical documentation](./docs/TECHNICAL_DOCUMENTATION.md)
-- [Contribution guide](./docs/CONTRIBUTING.md)
-- [Release checklist](./docs/RELEASE_CHECKLIST.md)
+- [Arquitectura](./docs/ARCHITECTURE.md)
+- [Documentación de la API](./docs/API.md)
+- [Documentación técnica](./docs/TECHNICAL_DOCUMENTATION.md)
+- [Guía de contribución](./docs/CONTRIBUTING.md)
+- [Checklist de release](./docs/RELEASE_CHECKLIST.md)
 
-### UX/UI contracts
+### Contratos UX/UI
 
-Minimum reading before touching the interface:
+Lectura mínima antes de tocar la interfaz:
 
 1. [`docs/standards/ANCLORA_ECOSYSTEM_CONTRACT_GROUPS.md`](./docs/standards/ANCLORA_ECOSYSTEM_CONTRACT_GROUPS.md)
 2. [`docs/standards/ANCLORA_PORTFOLIO_SHOWCASE_CONTRACT.md`](./docs/standards/ANCLORA_PORTFOLIO_SHOWCASE_CONTRACT.md)
@@ -255,40 +259,40 @@ Minimum reading before touching the interface:
 4. [`docs/standards/MODAL_CONTRACT.md`](./docs/standards/MODAL_CONTRACT.md)
 5. [`docs/standards/LOCALIZATION_CONTRACT.md`](./docs/standards/LOCALIZATION_CONTRACT.md)
 
-## The Anclora ecosystem
+## El ecosistema Anclora
 
-This repository is the reusable technical engine.
+Este repositorio representa el motor técnico reutilizable.
 
-The `Anclora-Azure-Bay-landing-page` repository is the commercial and visual case study.
+El repositorio `Anclora-Azure-Bay-landing-page` representa el caso de estudio comercial y visual.
 
-- **Azure Bay** — the showcase of results.
-- **Anclora Portfolio** — the scalable technical foundation.
+- **Azure Bay** — la vitrina de resultados.
+- **Anclora Portfolio** — la base técnica escalable.
 
-## Production considerations
+## Consideraciones de producción
 
-The default inquiry and analytics stores use local JSON files for demonstration and automated testing.
+Los stores de inquiries y analítica utilizan archivos JSON locales para demostración y tests automatizados.
 
-A production implementation should connect the existing interfaces to services such as:
+Una implementación en producción debería conectar las interfaces existentes a servicios como:
 
-- a managed SQL database;
-- a CRM platform;
-- transactional email;
-- durable rate limiting;
-- consent-aware analytics;
-- authenticated administration.
+- una base de datos SQL gestionada;
+- una plataforma CRM;
+- email transaccional;
+- rate limiting duradero;
+- analítica con gestión de consentimiento;
+- administración autenticada.
 
-## Project scope
+## Alcance del proyecto
 
-This repository is intended to demonstrate:
+Este repositorio pretende demostrar:
 
-- premium frontend execution;
-- product-oriented development;
-- maintainable architecture;
-- reliable lead capture;
-- testable backend behaviour;
-- readiness for further commercial integrations.
+- ejecución frontend premium;
+- desarrollo orientado a producto;
+- arquitectura mantenible;
+- captura de leads fiable;
+- comportamiento de backend testeable;
+- preparación para futuras integraciones comerciales.
 
-It is not presented as a live property listing service, investment offer or operational CRM.
+No se presenta como un servicio real de listado de propiedades, una oferta de inversión ni un CRM operativo.
 
 ---
 
@@ -296,12 +300,12 @@ It is not presented as a live property listing service, investment offer or oper
 
 ### Antonio Ballesteros
 
-Product-oriented developer focused on premium web applications, automation and AI-assisted digital solutions.
+Desarrollador orientado a producto, centrado en aplicaciones web premium, automatización y soluciones digitales asistidas por IA.
 
 [![GitHub](https://img.shields.io/badge/GitHub-ToniIAPro73-181717?logo=github)](https://github.com/ToniIAPro73)
 
 <br />
 
-**Designed and engineered as part of the Anclora digital ecosystem.**
+**Diseñado y desarrollado como parte del ecosistema digital Anclora.**
 
 </div>
