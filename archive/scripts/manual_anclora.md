@@ -2352,16 +2352,16 @@ text
 │ ───────────────────────────────────────────────────────────────────────── │
 │ │
 │ Usuario: carlos@inmobiliariaperez.es │
-│ Tenant: tenant_abc123 (Inmobiliaria Pérez) │
+│ Tenant: tenant*abc123 (Inmobiliaria Pérez) │
 │ │
 │ Consulta ejecutada: │
 │ ┌─────────────────────────────────────────────────────────────────────┐ │
 │ │ │ │
-│ │ SELECT _ FROM leads WHERE status = 'active' │ │
+│ │ SELECT * FROM leads WHERE status = 'active' │ │
 │ │ │ │
 │ │ → Consulta transformada automáticamente por RLS: │ │
 │ │ │ │
-│ │ SELECT _ FROM leads │ │
+│ │ SELECT \_ FROM leads │ │
 │ │ WHERE status = 'active' │ │
 │ │ AND tenant_id = 'tenant_abc123' │ │
 │ │ │ │
