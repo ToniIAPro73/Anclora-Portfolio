@@ -14,6 +14,8 @@ conservado aquí para mantener la raíz del repositorio limpia sin borrar nada.
   scripts de herramientas de IA/scaffolding (z.ai, Claude, Zencoder) ajenas al proyecto.
 - `package-lock.json` — lockfile de npm duplicado; el gestor de paquetes del proyecto es Bun (`bun.lock`).
 - `README_1.md` — borrador de referencia usado para la versión premium del `README.md` principal.
+- `logo-anclora-private-estates-exp.png` — variante experimental del logo, sustituida por
+  `public/logo-anclora-private-estates-header.png` en toda la app y los READMEs.
 - `scripts/` — manual de Anclora Nexus (`manual_anclora.md`, `Manual_Anclora_Nexus_Final.docx`,
   `generar_manual.py`) y `generate-images.ts`, utilidades huérfanas sin referencia en `package.json`.
 
