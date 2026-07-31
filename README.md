@@ -51,8 +51,15 @@ src/
   hooks/
   data/
   lib/
-db/
+prisma/
+scripts/
+docs/
+  standards/
+  analysis/
+archive/
 ```
+
+El material historico y los residuos de scaffolding se conservan en `archive/` (ver `archive/README.md`).
 
 Documentacion tecnica:
 
@@ -69,17 +76,17 @@ Documentacion tecnica:
 ## Uso local
 
 ```bash
-npm install
-npm run dev
+bun install
+bun dev
 ```
 
 ## Quality Gates
 
 ```bash
-npm run -s lint
-npm run -s type-check
-npm run -s test
-npm run -s build
+bun run lint
+bun run type-check
+bun run test
+bun run build
 ```
 
 ## Relacion con Azure Bay

@@ -59,6 +59,7 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
       "examples/**",
+      "archive/**",
       "skills",
       "coverage/**",
       "scripts/run-eslint.cjs",
