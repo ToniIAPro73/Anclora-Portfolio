@@ -5,6 +5,7 @@ export const translations = {
   es: {
     nav: {
       blueprint: "Arquitectura",
+      storytelling: "Historia",
       investment: "Inversión",
       features: "Características",
       gallery: "Galería",
@@ -299,6 +300,7 @@ export const translations = {
   en: {
     nav: {
       blueprint: "Blueprint",
+      storytelling: "Story",
       investment: "Investment",
       features: "Features",
       gallery: "Gallery",

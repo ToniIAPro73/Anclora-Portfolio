@@ -40,6 +40,7 @@ const Toaster = dynamic(() => import('@/components/ui/toaster').then((mod) => mo
 
 export default function AndratxAzureResidences() {
   const [showDeferredSections, setShowDeferredSections] = useState(false);
+  const [pendingSection, setPendingSection] = useState<string | null>(null);
   const {
     lang,
     t,
@@ -92,10 +93,29 @@ export default function AndratxAzureResidences() {
 
   const handleScrollToSection = (id: string) => {
     if (!showDeferredSections) {
+      setPendingSection(id);
       setShowDeferredSections(true);
+      return;
     }
     scrollToSection(id);
   };
+
+  // Deferred sections mount asynchronously (dynamic imports); retry until the target exists.
+  useEffect(() => {
+    if (!showDeferredSections || !pendingSection) return;
+
+    let attempts = 0;
+    const tryScroll = () => {
+      if (document.getElementById(pendingSection)) {
+        scrollToSection(pendingSection);
+        setPendingSection(null);
+      } else if (attempts < 10) {
+        attempts += 1;
+        setTimeout(tryScroll, 100);
+      }
+    };
+    tryScroll();
+  }, [showDeferredSections, pendingSection, scrollToSection]);
 
   return (
     <div className="min-h-screen ap-surface-ivory overflow-x-hidden">
@@ -113,6 +133,8 @@ export default function AndratxAzureResidences() {
         onTrackContactClick={() => trackEvent("nav_contact_click")}
       />
 
+      <FloatingSidebar lang={lang} />
+
       <main id="main-content">
         <HeroSection
           t={t.hero}
@@ -122,8 +144,6 @@ export default function AndratxAzureResidences() {
 
         {showDeferredSections && (
           <>
-            <FloatingSidebar lang={lang} />
-
             <BlueprintSection t={t.blueprint} />
             <StorytellingSection t={t.storytelling} />
             <InvestmentSection t={t.investment} lang={lang} />

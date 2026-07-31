@@ -73,7 +73,7 @@ export function HeroSection({ t, onScrollToSection, onTrackEvent }: HeroSectionP
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
         <button
           type="button"
-          onClick={() => onScrollToSection("investment")}
+          onClick={() => onScrollToSection("blueprint")}
           aria-label={t.scrollText}
           className="flex flex-col items-center gap-2 text-[rgba(248,245,242,0.7)] hover:text-[#F8F5F2] transition-colors"
         >

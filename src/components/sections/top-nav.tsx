@@ -49,7 +49,6 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection, onTrac
             <div className="hidden xl:flex items-center gap-1 mr-2">
               {Object.entries(tNav)
                 .filter(([key]) => key !== "contact")
-                .slice(0, 4)
                 .map(([key, label]) => (
                   <button
                     key={key}
@@ -82,7 +81,7 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection, onTrac
               {tNav.contact}
             </Button>
 
-            <div className="relative">
+            <div className="relative xl:hidden">
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen((value) => !value)}
