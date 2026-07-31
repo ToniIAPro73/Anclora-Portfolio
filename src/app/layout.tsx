@@ -81,7 +81,7 @@ export default function RootLayout({
     "@type": "Organization",
     name: "Anclora Private Estates",
     url: "https://anclora-estates.com",
-    logo: "https://anclora-estates.com/logo.png",
+    logo: "https://anclora-estates.com/logo-anclora-private-estates-exp.png",
     parentOrganization: {
       "@type": "Organization",
       name: "Anclora Group",

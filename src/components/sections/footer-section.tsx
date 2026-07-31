@@ -15,11 +15,13 @@ export function FooterSection({ t, lang }: { t: FooterText; lang: Language }) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <Image src="/logo.png" alt="Anclora Private Estates" width={40} height={40} className="w-10 h-10 object-contain" />
-              <div>
-                <span className="font-serif text-xl font-semibold">Anclora</span>
-                <span className="font-script text-[#C5A059] text-base ml-1">Private Estates</span>
-              </div>
+              <Image
+                src="/logo-anclora-private-estates-exp.png"
+                alt="Anclora Private Estates"
+                width={2048}
+                height={483}
+                className="h-10 w-auto object-contain"
+              />
             </div>
             <p className="text-[#94A3B8] max-w-md">{t.tagline}</p>
             <p className="mt-3 text-xs leading-relaxed text-[#94A3B8] max-w-xl">
