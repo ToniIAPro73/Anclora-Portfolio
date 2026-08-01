@@ -1,25 +1,29 @@
 # Modal Contract
 
 ## Objetivo
+
 Garantizar un patrón único de modales en todo el ecosistema Anclora: jerarquía clara, acciones visibles y cero scroll evitable.
 
 ## Fuente ejecutable
 
 La implementación base de overlays debe salir de `anclora-design-system`:
+
 - `components` para `dialog`, `sheet`, `drawer` o primitive equivalente
 - `patterns` para formularios densos, selectores visuales, galerías o flows multi-step
 - `tokens` y `foundations` para spacing, radii, elevation, backdrop y focus handling
 
 Regla:
+
 - un modal de producto no debe nacer como composición local si el caso encaja en una primitive o pattern ya existente.
 
 ## Autoridad
 
-- Registro operativo: `docs/governance/contracts-registry.json`
+- Registro operativo: `contracts/governance/contracts-registry.json`
 - Inventario aplicable: `docs/governance/ecosystem-repos.json`
 - Fuente ejecutable relacionada: `anclora-design-system`
 
 ## Reglas obligatorias
+
 - El modal se dimensiona según contenido y viewport real, no desde un ancho fijo heredado por defecto.
 - La primera estrategia es reorganizar layout y ampliar superficie útil, no introducir scroll.
 - El modal puede ocupar gran parte del viewport si eso mejora edición o lectura.
@@ -28,6 +32,7 @@ Regla:
 - El fondo del modal debe separar con claridad la superficie modal del fondo.
 
 ## Regla de scroll
+
 - El scroll de modal completo es el último recurso.
 - Antes de aceptarlo hay que:
   - ampliar tamaño
@@ -38,6 +43,7 @@ Regla:
 - Si un bloque concreto es el que crece demasiado, el scroll debe vivir en ese bloque antes que en todo el modal.
 
 ## Layout recomendado
+
 - Header alineado a la izquierda con espacio para cierre superior derecho.
 - Body en `grid` o layout explícito, nunca como columna larga por inercia.
 - Footer con secundaria y primaria claramente diferenciadas.
@@ -59,15 +65,17 @@ Regla:
 - `anclora-playa-viva-uniestate`
 
 Nota:
+
 - `anclora-group` mantiene autoridad matriz y criterios globales, pero no es target normal de propagación de este contrato transversal.
 
 ## Sincronización con repos consumidores
 
-- Contrato fuente en la bóveda: `docs/standards/MODAL_CONTRACT.md`
+- Contrato fuente en la bóveda: `contracts/components/MODAL_CONTRACT.md`
 - Target normal de propagación: `docs/standards/`
-- Dependencia de auditoría y propagación desde `docs/governance/contracts-registry.json`
+- Dependencia de auditoría y propagación desde `contracts/governance/contracts-registry.json`
 
 ## Modales densos
+
 - Formularios complejos: usar modal ancho o casi fullscreen.
 - Bibliotecas de resultados: limitar ventana visible y añadir paginación o navegación.
 - Selectores visuales: evitar hover que invada el espacio de cards contiguas.
@@ -77,21 +85,25 @@ Nota:
 ## Adaptación por grupo
 
 Aplicaciones internas:
+
 - priorizar velocidad de lectura y edición
 - framing sobrio
 - foco en densidad útil
 
 Aplicaciones premium:
+
 - se permite un tratamiento más editorial del backdrop y del header
 - no se sacrifica claridad operativa
 
 Aplicaciones ultra premium:
+
 - se permite un framing más ceremonial
 - si la interacción supera el límite cómodo de un modal, debe escalar a sheet o página dedicada
 
 ## Gate de aceptación
 
 Un modal no está listo si:
+
 - obliga a scroll vertical por mala composición
 - esconde acciones críticas
 - no deja claro cómo cerrarlo
