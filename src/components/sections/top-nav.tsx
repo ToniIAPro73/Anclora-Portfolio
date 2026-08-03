@@ -36,7 +36,7 @@ export function TopNav({ lang, tNav, onToggleLanguage, onScrollToSection, onTrac
             onClick={() => handleGoTo("hero")}
           >
             <Image
-              src="/logo-anclora-private-estates-exp.png"
+              src="/anclora-private-estates-exp.png"
               alt="Anclora Private Estates"
               width={2048}
               height={483}

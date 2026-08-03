@@ -16,7 +16,7 @@ export function FooterSection({ t, lang }: { t: FooterText; lang: Language }) {
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <Image
-                src="/logo-anclora-private-estates-exp.png"
+                src="/anclora-private-estates-exp.png"
                 alt="Anclora Private Estates"
                 width={2048}
                 height={483}
