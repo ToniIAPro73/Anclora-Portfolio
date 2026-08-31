@@ -766,7 +766,7 @@ _No verificado — pendiente de auditoría._
 
 ---
 
-## Anclora SyncXML (Premium)
+## Anclora GuestHub (Premium)
 
 Accent: Dorado apagado `#BFA46A`
 
