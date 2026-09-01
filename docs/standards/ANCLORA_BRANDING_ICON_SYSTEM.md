@@ -80,7 +80,7 @@ Ondas = mismo color que el borde. Esquema monocromático.
 | Premium        | `anclora-talent` _(pausado)_                          | Cobre        | `#4A9FD8` azul cielo                                                                                | `#141E28` navy azul                                                                                                            | 205°      |
 | Premium        | `anclora-synergi`                                     | Cobre        | `#8C5AB4` púrpura                                                                                   | `#1C162A` navy púrpura                                                                                                         | 280°      |
 | Premium        | `anclora-command-center`                              | Azul/violeta | `#6C63FF` violeta premium + `#5FA8FF` azul luminoso                                                 | `#1E1A2E` navy púrpura                                                                                                         | 245°      |
-| Premium        | `anclora-syncxml` _(añadido 2026-08)_                 | Cobre        | `#BFA46A` dorado apagado                                                                            | `#070A12` navy profundo _(inferido del fondo real del producto)_                                                               | 41°       |
+| Premium        | `anclora-guesthub` _(añadido 2026-08)_ _(renombrado a GuestHub 2026-08)_                 | Cobre        | `#BFA46A` dorado apagado                                                                            | `#070A12` navy profundo _(inferido del fondo real del producto)_                                                               | 41°       |
 | Ultra          | `anclora-private-estates`                             | Oro          | `#D4AF37` oro                                                                                       | `#1A3035` teal oscuro                                                                                                          | 45°       |
 | Ultra          | `anclora-private-estates-landing` _(añadido 2026-08)_ | Oro          | `#D4AF37` oro _(comparte icono con `anclora-private-estates`, mismo lockup confirmado)_             | `#1A3035` teal oscuro                                                                                                          | 45°       |
 
@@ -245,7 +245,7 @@ navy (#0F1520) with subtle leather grain texture, waves brushed indigo blue
 metal (#5C70D8) with soft highlights, black background, 3D render, no text
 ```
 
-### SyncXML _(añadido 2026-08)_
+### GuestHub _(añadido 2026-08)_
 
 ```
 Circular emblem, three horizontal smooth wave lines, outer ring polished
