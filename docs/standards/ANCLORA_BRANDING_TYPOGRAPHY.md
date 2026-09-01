@@ -90,7 +90,7 @@ Justificación: DM Sans aporta un carácter más redondo y accesible que Inter, 
 | `anclora-talent`                      | Sin fuente custom _(pausado, fuera de alcance activo)_                                   | Añadir DM Sans (si se reactiva)                                  |
 | `anclora-synergi`                     | Cardo (display) + Inter (body)                                                           | Eliminar Cardo (reservada para ultra premium). Migrar a DM Sans. |
 | `anclora-command-center`              | Sin fuente custom                                                                        | Añadir DM Sans                                                   |
-| `anclora-syncxml` _(añadido 2026-08)_ | Pendiente de verificar fuente real — no auditado en esta sesión (solo se verificó color) | Confirmar/añadir DM Sans                                         |
+| `anclora-guesthub` _(añadido 2026-08)_ | Pendiente de verificar fuente real — no auditado en esta sesión (solo se verificó color) | Confirmar/añadir DM Sans                                         |
 
 ---
 
@@ -152,7 +152,7 @@ Justificación: Contraste serif (display) + sans-serif (body) clásico de marcas
 | `anclora-talent`                       | Premium _(pausado)_ | DM Sans                                        | —                            |
 | `anclora-synergi`                      | Premium             | DM Sans                                        | Cardo, Inter                 |
 | `anclora-command-center`               | Premium             | DM Sans                                        | —                            |
-| `anclora-syncxml`                      | Premium             | DM Sans _(pendiente de verificar estado real)_ | Pendiente de auditoría       |
+| `anclora-guesthub`                      | Premium             | DM Sans _(pendiente de verificar estado real)_ | Pendiente de auditoría       |
 | `anclora-private-estates`              | Ultra Premium       | —                                              | Cormorant Garamond           |
 | `anclora-private-estates-landing-page` | Ultra Premium       | Cardo, Fraunces                                | —                            |
 
